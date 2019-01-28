@@ -1,0 +1,10 @@
+- @title = "Version"
+
+- @theme = "deep-blue"
+
+.page-box.last-box.d-flex.align-items-center{ class: "theme-#{@theme}-focus-bg" }
+  .container
+    .text-center.px-5.mb-5
+      = image_tag "logos/help-ds-placeholder.png", style: "max-width: 400px;width: 100%;height: auto;", class: "img-ignore-selection rounded"
+    .text-center.text-shadow{ class: @theme != "default" ? "text-white" : nil, style: "font-size: 2rem;" }
+      = "v#{HelpDS::VERSION::STRING}"

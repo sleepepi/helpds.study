@@ -1,0 +1,11 @@
+Dear <%= @user.username %>,
+
+Your account <%= @user.email %> has been approved.
+
+Login to get started:
+
+<%= ENV["website_url"] %>
+
+Email us at <%= ActionMailer::Base.smtp_settings[:email] %> with any questions!
+
+The <%= ENV["website_name"] %> Team

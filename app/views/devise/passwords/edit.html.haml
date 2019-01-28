@@ -1,0 +1,20 @@
+- @title = "Change your password"
+
+- @theme = "deep-blue"
+
+.page-box.last-box.d-flex.flex-column.justify-content-center.theme-bg{ class: "theme-#{@theme}-focus-bg" }
+  .container
+    %p.lead.text-center.text-white= @title
+
+    .sign-up-form
+      .sign-up-form-title
+        Change password
+
+      = form_with model: resource, as: resource_name, url: password_path(resource_name), method: :put, local: true do |form|
+        = form.hidden_field :reset_password_token
+
+        = render "forms/vertical/password_field", form: form, object: resource, key: :password, key_name: "New Password", autocomplete: "new-password"
+        = render "forms/vertical/password_field", form: form, object: resource, key: :password_confirmation, key_name: "Password Confirmation", autocomplete: "new-password"
+
+        .form-group.submit-btn-container
+          = form.submit "Change my password", class: "btn btn-primary btn-block btn-shadow"

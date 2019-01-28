@@ -1,0 +1,39 @@
+%p{ style: p_style }
+  Dear
+  = succeed "," do
+    = @user.username
+
+%p{ style: p_style }
+  Your registration with
+  = ENV["website_name"]
+  was successful.
+
+- if @user.confirmation_token.present?
+  %p{ style: center_style }
+    Please
+    = link_to "confirm your account", "#{ENV["website_url"]}/confirmation?confirmation_token=#{@user.confirmation_token}", style: link_style
+    to get started.
+
+%div{ style: p_style }
+  %ul
+    %li
+      %span{ style: emphasis_style } Read
+      current study documents and updated protocols.
+    %li
+      %span{ style: emphasis_style } Find
+      contact information for all staff members.
+    %li
+      %span{ style: emphasis_style } Explore
+      reports showing the overall progress of
+      = succeed "." do
+        = ENV["website_name"]
+
+%p{ style: p_style }
+  Email us at
+  = mail_to ActionMailer::Base.smtp_settings[:email], ActionMailer::Base.smtp_settings[:email], style: emphasis_style
+  with any questions!
+
+%p{ style: p_style }
+  The
+  = ENV["website_name"]
+  Team

@@ -1,0 +1,73 @@
+.key-contacts {
+  margin-bottom: map-get($spacers, 4);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  @include media-breakpoint-up(sm) {
+    flex-direction: row;
+  }
+
+  .key-contact {
+    margin-left: map-get($spacers, 1);
+    margin-right: map-get($spacers, 1);
+  }
+}
+
+.key-contact {
+  align-items: center;
+  border-left: 4px solid transparent;
+  border-radius: $border-radius;
+  display: flex;
+  padding: map-get($spacers, 3);
+  margin-bottom: map-get($spacers, 3);
+
+  @include media-breakpoint-up(sm) {
+    padding: map-get($spacers, 4);
+  }
+}
+
+.key-contact-icon {
+  display: inline-block;
+  margin-right: map-get($spacers, 1);
+  padding-right: map-get($spacers, 3);
+}
+
+.key-contact-info {
+  display: inline;
+  font-weight: 200;
+}
+
+// .key-contact-name {}
+
+.key-contact-role {
+  display: inline;
+  font-size: 80%;
+}
+
+.key-contact-email,
+.key-contact-phone {
+  font-size: 90%;
+}
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .key-contact {
+      background-color: map-get($theme, dashboard-bg);
+      border-color: map-get($theme, header-border);
+      box-shadow: 0 1px 5px map-get($theme, box-shadow-color);
+      color: theme-color($theme, body-color, $p900-grey);
+    }
+
+    .key-contact-icon,
+    .key-contact-role {
+      color: map-get($theme, p300);
+    }
+
+    .key-contact-email,
+    .key-contact-phone {
+      color: theme-color($theme, text-muted, $text-muted);
+    }
+  }
+}

@@ -1,0 +1,11 @@
+- @title = "Docs"
+
+- @theme = "default"
+- content_for :header, @title
+= render "internal/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li.breadcrumb-muted docs
+- content_for :sidebar, render("folders/sidebar")
+
+#latest-uploads= render "files/latest_uploads", documents: @documents

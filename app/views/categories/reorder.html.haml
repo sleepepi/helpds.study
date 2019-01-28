@@ -1,0 +1,46 @@
+- @title = "Edit Folders"
+
+- @theme = "default"
+- content_for :header, @title
+= render "internal/tabs"
+- content_for :sidebar, render("folders/sidebar")
+
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to "docs", folders_path
+    %li.breadcrumb-muted edit folders
+
+- if @categories.present?
+  %div{ data: { object: "categories-sortable", path: reorder_categories_path(format: "js") } }
+    - @categories.each do |category|
+      .category-box{ data: { category_id: category.id } }
+        .float-right
+          - if category.folders_count.zero?
+            %span.badge.badge-light 0 folders
+          - elsif category.archived?
+            %span.badge.badge-light archived
+          = link_to icon("fas", "pencil-alt"), edit_category_path(category)
+          = link_to icon("fas", "trash"), category, method: :delete, data: { confirm: "Delete #{category.name} and ALL folders and files?" }
+        - if category.folders_count.zero? || category.archived?
+          = icon("far", "folder", class: "text-muted")
+        - else
+          = icon("fas", "folder-open", class: "text-primary-muted")
+        %span{ style: "font-variant: small-caps;" }= category.name
+        %div.pl-4
+          - category.folders.each do |folder|
+            %div.small
+              - if category.archived? || folder.archived?
+                = icon("far", "folder", class: "text-muted")
+              - else
+                = icon("fas", "folder-open", class: "text-primary-muted")
+              = folder.name
+              = link_to icon("fas", "pencil-alt"), edit_category_folder_path(category, folder), class: "text-muted"
+              = link_to icon("fas", "trash"), folder_path(folder.id), method: :delete, data: { confirm: "Delete #{folder.name} and ALL files?"}, class: "text-primary-muted"
+          %div.small
+            = link_to new_folder_path(category: category) do
+              = icon("fas", "folder-open")
+              Add folder
+- else
+  .jumbotron.jumbotron-custom-text
+    = icon("fas", "clone", class: "mr-1")
+    No folders found.

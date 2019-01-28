@@ -1,0 +1,18 @@
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  &.full-page {
+    margin-bottom: $footer-height;
+  }
+
+  &.full-page-no-header {
+    margin-bottom: $footer-height;
+  }
+
+  &.full-page-no-header-no-footer {
+    margin-bottom: 0;
+  }
+}

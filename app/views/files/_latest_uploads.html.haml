@@ -1,0 +1,47 @@
+- if documents.present?
+  .subheading Latest Uploads
+
+  .dashboard-container.dashboard-table
+    %table.table.table-striped.table-borderless.table-hover.table-sticky
+      %col.d-none.d-sm-table-column{ width: "1px" }
+      %col
+      %col.d-none.d-lg-table-column
+      %col.d-none.d-md-table-column
+      %col.d-none.d-sm-table-column
+      %thead
+        %tr
+          %th.d-none.d-sm-table-cell
+          %th Name
+          %th.d-none.d-lg-table-cell Folder
+          %th.d-none.d-md-table-cell.text-center Size
+          %th.d-none.d-sm-table-cell.text-center Uploaded
+      - documents.includes(folder: :category).each do |document|
+        - folder = document.folder
+        - category = folder.category
+        %tr
+          %td.d-none.d-sm-table-cell
+            = render "files/icon", document: document
+          %td
+            = link_to document.filename, document_download_link(document)
+            .d-block.d-lg-none.small
+              = category.name
+              = icon("fas", "caret-right")
+              = link_to folder.name, category_folder_path(category, folder)
+          %td.d-none.d-lg-table-cell.small
+            = category.name
+            = icon("fas", "caret-right")
+            = link_to folder.name, category_folder_path(category, folder)
+          %td.d-none.d-md-table-cell.text-center.nowrap.small= number_to_human_size document.byte_size
+          %td.d-none.d-sm-table-cell.text-center.nowrap.small= document.created_at.strftime("%Y-%^b-%d")
+
+  .jumbotron.jumbotron-custom-text.jumbotron-shadow
+    = icon("fas", "search")
+
+    Use the
+    = link_to "search", search_path
+    to find files.
+- else
+  .jumbotron.jumbotron-custom-text.jumbotron-shadow
+    = icon("fas", "info-circle", class: "text-primary-muted")
+
+    No files have been uploaded.

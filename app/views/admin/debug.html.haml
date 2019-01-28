@@ -1,0 +1,13 @@
+- @title = "Debug - Admin"
+- @menu_title = "Debug"
+
+- @theme = "default"
+- content_for :header, @menu_title
+= render "admin/tabs"
+- content_for :sidebar, render("admin/sidebar")
+
+.dashboard-container
+  = render "forms/horizontal/show/generic", title: "Website name", content: ENV["website_name"]
+  = render "forms/horizontal/show/generic", title: "Website URL", content: ENV["website_url"]
+  = render "forms/horizontal/show/generic", title: "Emails enabled", content: simple_check(EMAILS_ENABLED)
+  %div{ data: { channel: "files-count" } }=# render "admin/files_count", number: rand(100)

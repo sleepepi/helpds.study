@@ -1,0 +1,7 @@
+.col-12.col-md-3.col-xl-2.sidebar-wrapper
+  .sidebar
+    #sidebar-nav-wrapper.sidebar-nav-wrapper.collapse
+      .pt-3.py-md-3.mx-3.my-0.ml-md-3.mb-md-3.mr-md-0
+        %ul.sidebar-menu.sidebar-menu-shadow
+          %li.sidebar-menu-header= render "sidebar/toggle", title: ENV["website_name"]
+          %li= link_to "Reports", reports_path, class: current_page?(reports_path) ? "active" : nil

@@ -1,0 +1,13 @@
+%ul.navbar-nav.mr-auto.display-small-scrolled
+  = render "menu/item", title: "Dashboard", path: dashboard_path
+  = render "menu/item", title: "Contact", path: contact_path
+
+%ul.navbar-nav
+  - if current_user
+    = render "menu/dropdown_account"
+  - else
+    %li.nav-item{ class: current_page?(new_user_session_path) ? "active" : nil }
+      = link_to new_user_session_path, class: "nav-link" do
+        Sign in
+      - if current_page?(new_user_session_path)
+        %span.sr-only (current)

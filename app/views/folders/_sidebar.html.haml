@@ -1,0 +1,27 @@
+- categories = Category.sidebar
+.col-12.col-md-3.col-xl-2.sidebar-wrapper
+  .sidebar
+    #sidebar-nav-wrapper.sidebar-nav-wrapper.collapse.pt-3.py-md-3
+      .mx-3.my-0.ml-md-3.mb-md-3.mr-md-0
+        %ul.sidebar-menu.sidebar-menu-shadow
+          %li.sidebar-menu-header= render "sidebar/toggle", title: "Docs"
+          %li= link_to "Overview", folders_path, class: current_page?(folders_path) ? "active" : nil
+          - categories.each do |category|
+            - folders = category.folders.where(archived: false)
+            - if folders.present?
+              %li.sidebar-menu-header= category.name
+              - category.folders.each do |folder|
+                %li= link_to folder.name, category_folder_path(category, folder), class: current_page?(category_folder_path(category, folder)) ? "active" : nil
+
+      - if current_user.editor?
+        .mx-3.my-0.ml-md-3.mb-md-3.mr-md-0
+          %ul.sidebar-menu.sidebar-menu-shadow
+            %li.sidebar-menu-header Editor
+            %li
+              = link_to new_folder_path, class: @folder&.new_record? ? "active" : nil do
+                = icon("fas", "folder-open")
+                Add folder
+            %li
+              = link_to reorder_categories_path, class: current_page?(reorder_categories_path) || (params[:controller] == "folders" && params[:action] == "edit") ? "active" : nil do
+                = icon("fas", "sort")
+                Edit folders

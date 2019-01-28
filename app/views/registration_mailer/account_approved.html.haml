@@ -1,0 +1,25 @@
+%p{ style: p_style }
+  Dear
+  = succeed "," do
+    = @user.username
+%p{ style: p_style }
+  Your account
+  = mail_to @user.email, @user.email, style: emphasis_style
+  has been
+  = succeed "." do
+    %span{ style: emphasis_style } approved
+
+  Login to get started:
+
+%p{ style: center_style }
+  = link_to ENV["website_url"], ENV["website_url"], style: link_style
+
+%p{ style: p_style }
+  Email us at
+  = mail_to ActionMailer::Base.smtp_settings[:email], ActionMailer::Base.smtp_settings[:email], style: emphasis_style
+  with any questions!
+
+%p{ style: p_style }
+  The
+  = ENV["website_name"]
+  Team

@@ -1,0 +1,14 @@
+- if folder.new_record?
+  - url = folders_path
+  - method = :post
+- else
+  - url = folder_path(folder.id)
+  - method = :patch
+
+= form_with model: folder, url: url, method: method, local: true do |form|
+  = render "forms/horizontal/text_field", form: form, object: folder, key: :category, value: folder.category&.name
+  = render "forms/horizontal/text_field", form: form, object: folder, key: :name, slug: "slug"
+  = render "forms/horizontal/slug_field", form: form, object: folder, key: :slug
+  = render "forms/horizontal/text_area", form: form, object: folder, key: :description
+  = render "forms/horizontal/check_box", form: form, object: folder, key: :archived
+  = render "forms/horizontal/submit", form: form, object: folder, cancel: folder.new_record? ? folders_path : reorder_categories_path

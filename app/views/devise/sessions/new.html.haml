@@ -1,0 +1,34 @@
+- @title = "Sign in"
+
+- @theme = "deep-blue"
+
+.page-box.last-box.d-flex.flex-column.justify-content-center{ class: "theme-#{@theme}-focus-bg" }
+  .container
+    %p.lead.text-center.text-white Welcome back!
+
+    .sign-up-form
+      .sign-up-form-title
+        Sign in
+
+      = form_with model: resource, url: user_session_path, local: true do |form|
+        .form-group
+          = form.label :email
+          = form.email_field :email, class: "form-control#{" is-invalid" if flash[:alert].present?}", autocomplete: "off", autocorrect: "off", autocapitalize: "none", spellcheck: "false"
+
+        .form-group
+          = form.label :password
+          %small= link_to "(Forgot password?)", new_password_path(resource_name), tabindex: "-1"
+          = form.password_field :password, class: "form-control#{" is-invalid" if flash[:alert].present?}", autocomplete: "current-password"
+          - if flash[:alert].present?
+            .invalid-feedback= flash[:alert].html_safe
+
+        .form-group.submit-btn-container
+          = form.submit "Sign in", class: "btn btn-primary btn-block btn-shadow"
+
+        - flash[:alert] = nil
+
+    .sign-up-form.text-center
+      New to
+      = succeed "?" do
+        = ENV["website_name"]
+      = link_to "Create an account.", new_user_registration_path

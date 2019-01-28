@@ -1,0 +1,42 @@
+- @title = "Folder"
+
+- @theme = "default"
+- content_for :header, @title
+= render "internal/tabs"
+- content_for :sidebar, render("internal/sidebar")
+
+.dashboard-container.dashboard-container-border-accent
+  .d-inline-block.mr-1= icon("far", "file-alt")
+  .d-inline{ style: "font-weight: 200;" }= params[:title]
+
+.dashboard-container.dashboard-table
+  %table.table.table-striped.table-borderless.table-hover.table-sticky
+    %col
+    %col
+    %col{ width: "1px" }
+    %thead
+      %tr
+        %th File
+        %th.text-center Size
+        %th.text-center Uploaded
+    %tr
+      %td
+        %span.text-primary Introduction.pdf
+        %small.text-muted (download disabled)
+      %td.text-center.small
+        = number_to_human_size 202049
+      %td.text-center.nowrap.small
+        = (Time.zone.now - 1.day).strftime("%Y-%^b-%d")
+    %tr
+      %td
+        %span.text-primary MOP-Final-revision.pdf
+        %small.text-muted (download disabled)
+      %td.text-center.small
+        = number_to_human_size 4022049
+      %td.text-center.nowrap.small
+        = (Time.zone.now - 2.day).strftime("%Y-%^b-%d")
+
+.jumbotron.jumbotron-custom-text.jumbotron-shadow
+  = icon("fas", "info-circle")
+
+  Not finding a specific file? Use the search to find it more quickly.

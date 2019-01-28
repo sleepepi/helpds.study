@@ -1,0 +1,16 @@
+.subheading {
+  border-bottom: 2px solid transparent;
+  font-size: 1.5rem;
+  font-variant: small-caps;
+  margin-bottom: map-get($spacers, 4);
+  padding: 0 map-get($spacers, 2);
+  text-align: center;
+}
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .subheading {
+      border-color: theme-color($theme, body-color, $p900-grey);
+    }
+  }
+}

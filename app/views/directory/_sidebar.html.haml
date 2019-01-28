@@ -1,0 +1,18 @@
+.col-12.col-md-3.col-xl-2.sidebar-wrapper
+  .sidebar
+    #sidebar-nav-wrapper.sidebar-nav-wrapper.collapse.pt-3.py-md-3
+      .mx-3.my-0.ml-md-3.mb-md-3.mr-md-0
+        %ul.sidebar-menu.sidebar-menu-shadow
+          %li.sidebar-menu-header= render "sidebar/toggle", title: "Directory"
+          %li= link_to "Overview", directory_path, class: current_page?(directory_path) ? "active" : nil
+          %li.sidebar-menu-header Centers
+          %li= link_to "Coordinating", coordinating_centers_path, class: current_page?(coordinating_centers_path) || @site&.center_type.in?(%w(data clinical)) ? "active" : nil
+          %li= link_to "Recruiting", recruiting_centers_path, class: current_page?(recruiting_centers_path) || @site&.center_type == "recruiting" ? "active" : nil
+      - if current_user.editor?
+        .mx-3.my-0.ml-md-3.mb-md-3.mr-md-0
+          %ul.sidebar-menu.sidebar-menu-shadow
+            %li.sidebar-menu-header Editor
+            %li
+              = link_to new_site_path, class: @site&.new_record? ? "active" : nil do
+                = icon("fas", "map-marker-alt")
+                Add site

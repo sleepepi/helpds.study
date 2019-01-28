@@ -1,0 +1,35 @@
+.contact-container + .contact-container {
+  margin-top: map-get($spacers, 4);
+
+  @include media-breakpoint-up(md) {
+    margin-top: map-get($spacers, 5);
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-top: ($spacer * 4.5); // Essentially map-get($spacers, 6)
+  }
+}
+
+.contact-title {
+  font-size: 1.25rem;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 1.5rem;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.75rem;
+  }
+
+  + .contact-body {
+    margin-top: map-get($spacers, 2);
+  }
+}
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .contact-title {
+      color: map-get($theme, p500);
+    }
+  }
+}

@@ -1,0 +1,5 @@
+= form_with model: category, local: true do |form|
+  = render "forms/horizontal/text_field", form: form, object: category, key: :name, slug: "slug"
+  = render "forms/horizontal/slug_field", form: form, object: category, key: :slug
+  = render "forms/horizontal/check_box", form: form, object: category, key: :archived
+  = render "forms/horizontal/submit", form: form, object: category, cancel: category.new_record? ? folders_path : reorder_categories_path

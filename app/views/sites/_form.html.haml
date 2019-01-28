@@ -1,0 +1,6 @@
+= form_with model: site, local: true do |form|
+  = render "forms/horizontal/text_field", form: form, object: site, key: :name, slug: "slug"
+  = render "forms/horizontal/slug_field", form: form, object: site, key: :slug
+  = render "forms/horizontal/select", form: form, object: site, key: :center_type, options: Site::CENTER_TYPES, include_blank: "--Select center type--"
+  = render "forms/horizontal/check_box", form: form, object: site, key: :archived
+  = render "forms/horizontal/submit", form: form, object: site

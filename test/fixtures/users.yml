@@ -1,0 +1,48 @@
+<% confirmed_at = Time.zone.now %>
+
+admin:
+  username: admin
+  full_name: Website Admin
+  email: admin@example.com
+  confirmed_at: <%= confirmed_at %>
+  approved: true
+  admin: true
+
+editor:
+  username: editor
+  full_name: Editor User
+  email: editor@example.com
+  confirmed_at: <%= confirmed_at %>
+  approved: true
+  editor: true
+
+viewer:
+  username: viewer
+  full_name: Viewer User
+  email: viewer@example.com
+  confirmed_at: <%= confirmed_at %>
+  approved: true
+
+regular:
+  username: regular
+  full_name: Regular User
+  email: regular@example.com
+  confirmed_at: <%= confirmed_at %>
+  approved: true
+
+unconfirmed:
+  username: unconfirmed
+  # full_name:
+  email: unconfirmed@example.com
+  confirmation_sent_at: <%= Time.zone.now %>
+  confirmation_token: <%= Devise.friendly_token %>
+  approved: true
+
+key_contact:
+  username: keycontact
+  full_name: Jane Smith
+  email: key_contact@example.com
+  confirmed_at: <%= confirmed_at %>
+  approved: true
+  role: Project Manager
+  key_contact: true

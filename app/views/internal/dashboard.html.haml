@@ -1,0 +1,67 @@
+- @title = "Dashboard"
+
+- @theme = "default"
+- content_for :header, @title
+= render "internal/tabs"
+- content_for :sidebar, render("internal/sidebar")
+
+.d-flex.flex-column.flex-sm-row.justify-content-around
+  - if current_user.incomplete_profile?
+    .dashboard-container.dashboard-container-border-accent{ style: "border-top: 1px solid #ccc;border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;background-color: #fff59d;width: 600px;max-width: 100%;" }
+      .mb-3
+        %strong Complete your profile
+      = render "directory/profile_form", user: current_user
+
+.d-flex.flex-column.flex-sm-row.justify-content-between
+  .dashboard-container.flex-fill
+    .mb-3
+      %strong
+        Welcome to the
+        = ENV["website_name"]
+        website!
+    %p
+      Quickly find
+      = icon("fas", "file-alt", class: "text-primary")
+      = link_to "documents", folders_path
+      and
+      = succeed "." do
+        = icon("fas", "user-circle", class: "text-primary")
+        = link_to "contact info", directory_path
+
+  - if @featured_documents.present? || @top_documents.present?
+    .dashboard-container.ml-0.ml-sm-3.flex-fill
+      - if @featured_documents.present?
+        %div.mb-3
+          %strong Featured docs
+        %div.ml-3.mb-4
+          - @featured_documents.each do |document|
+            .small.mb-1
+              .float-right.pl-2
+                = icon("far", "folder-open")
+                = link_to document.folder.name, category_folder_path(document.folder.category, document.folder), class: "link-blend"
+
+              .nowrap.overflow-hidden
+                = render "files/icon", document: document
+                =# icon("far", "star", style: "color: #fbc02d;") if document.featured?
+                = link_to document.filename, document_download_link(document)
+
+      - if @top_documents.present?
+        %div.mb-3
+          %strong Top downloads
+        %div.ml-3
+          - @top_documents.each do |document|
+            .small.mb-1
+              .float-right.pl-2
+                = icon("far", "folder-open")
+                = link_to document.folder.name, category_folder_path(document.folder.category, document.folder), class: "link-blend"
+
+              .nowrap.overflow-hidden
+                = render "files/icon", document: document
+                =# icon("far", "star", style: "color: #fbc02d;") if document.featured?
+                = link_to document.filename, document_download_link(document)
+
+.jumbotron.jumbotron-custom-text.jumbotron-shadow
+  = icon("far", "comments")
+
+  = mail_to ActionMailer::Base.smtp_settings[:email], "Contact us"
+  with any questions.

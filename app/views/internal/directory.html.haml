@@ -1,0 +1,34 @@
+- @title = "Directory"
+
+- @theme = "default"
+- content_for :header, @title
+= render "internal/tabs"
+- content_for :sidebar, render("directory/sidebar")
+
+- if @key_contacts.present?
+  .subheading
+    Key Contacts
+
+  .key-contacts
+    - @key_contacts.each do |user|
+      = render "directory/contact", user: user
+
+- if @users.present?
+  .subheading
+    Joined Recently
+
+  .key-contacts
+    - @users.each do |user|
+      = render "directory/contact", user: user
+
+  .jumbotron.jumbotron-custom-text.jumbotron-shadow
+    = icon("fas", "info-circle")
+    Update your profile in
+    = succeed "." do
+      = link_to "settings", settings_path
+
+- elsif false
+  .jumbotron.jumbotron-custom-text
+    = icon("fas", "clone", class: "mr-1")
+    No users found.
+    = link_to "Start over", directory_path if params[:search].present?

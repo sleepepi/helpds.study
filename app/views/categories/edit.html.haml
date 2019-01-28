@@ -1,0 +1,14 @@
+- @title = "Edit Category - #{@category.name_was}"
+
+- @theme = "default"
+- content_for :header, @category.name_was
+= render "internal/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to "docs", folders_path
+    %li= link_to @category.slug_was, reorder_categories_path
+    %li.breadcrumb-muted edit
+- content_for :sidebar, render("folders/sidebar")
+
+.dashboard-container
+  = render "form", category: @category

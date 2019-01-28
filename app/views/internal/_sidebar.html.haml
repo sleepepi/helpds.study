@@ -1,0 +1,18 @@
+.col-12.col-md-3.col-xl-2.sidebar-wrapper
+  .sidebar
+    #sidebar-nav-wrapper.sidebar-nav-wrapper.collapse.pt-3.py-md-3
+      .mx-3.my-0.ml-md-3.mb-md-3.mr-md-0
+        %ul.sidebar-menu.sidebar-menu-shadow
+          %li.sidebar-menu-header= render "sidebar/toggle", title: "Dashboard"
+          %li= link_to "Overview", dashboard_path, class: current_page?(dashboard_path) ? "active" : nil
+          %li.sidebar-menu-header Reports
+          %li= link_to "Data health", data_health_path, class: current_page?(data_health_path) ? "active" : nil
+          %li= link_to "Report card", report_card_path, class: current_page?(report_card_path) ? "active" : nil
+          %li= link_to "Randomizations", randomizations_path, class: current_page?(randomizations_path) ? "active" : nil
+          %li= link_to "Pareto", pareto_path, class: current_page?(pareto_path) ? "active" : nil
+
+      - if false
+        .mx-3.my-0.ml-md-3.mb-md-3.mr-md-0
+          %ul.sidebar-menu.sidebar-menu-shadow
+            %li.sidebar-menu-header Another Header
+            %li= link_to "Link", dashboard_path, class: current_page?(dashboard_path) ? "active" : nil

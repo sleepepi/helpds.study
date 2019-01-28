@@ -1,0 +1,14 @@
+ccc:
+  name: CCC
+  slug: ccc
+  center_type: clinical
+
+dcc:
+  name: DCC
+  slug: dcc
+  center_type: data
+
+two:
+  name: Hospital
+  slug: hospital
+  center_type: recruiting

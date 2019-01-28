@@ -1,0 +1,23 @@
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .text-shadow {
+      text-shadow: 0 2px 3px map-get($theme, shadow-color);
+    }
+
+    .text-primary {
+      color: map-get($theme, primary) !important;
+    }
+
+    .text-primary-muted {
+      color: map-get($theme, p300) !important;
+    }
+
+    .text-white {
+      color: map-get($theme, brand-white) !important;
+    }
+
+    .text-disabled {
+      color: theme-color($theme, input-disabled-bg, $p200-grey);
+    }
+  }
+}

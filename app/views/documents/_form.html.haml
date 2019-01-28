@@ -1,0 +1,3 @@
+= form_with model: document, local: true do |form|
+  = render "forms/horizontal/check_box", form: form, object: document, key: :featured, help_text: "Featured documents show up on dashboard."
+  = render "forms/horizontal/submit", form: form, object: document, cancel: document.new_record? ? folders_path : category_folder_path(document.folder.category, document.folder)

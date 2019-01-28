@@ -1,0 +1,20 @@
+Dear <%= @user.username %>,
+
+Your registration with <%= ENV["website_name"] %> was successful.
+
+<% if @user.confirmation_token.present? %>Please confirm you account to get started.
+
+<%= "#{ENV["website_url"]}/confirmation?confirmation_token=#{@user.confirmation_token}" %>
+
+<% end %>
+
+* Read current study documents and updated protocols.
+
+* Find contact information for all staff members.
+
+* Explore reports showing the overall progress of <%= ENV["website_name"] %>.
+
+
+Email us at <%= ActionMailer::Base.smtp_settings[:email] %> with any questions!
+
+The <%= ENV["website_name"] %> Team

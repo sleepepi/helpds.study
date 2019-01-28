@@ -1,0 +1,29 @@
+@each $color, $value in $theme-colors {
+  @each $name, $theme in $themes {
+    @if map-get($theme, $color) {
+      .theme-#{$name}-bg {
+        .btn-#{$color} {
+          @include button-variant(map-get($theme, $color), map-get($theme, $color));
+        }
+
+        .btn-outline-#{$color} {
+          @include button-outline-variant(map-get($theme, $color));
+        }
+
+        // Shadow
+        .btn-shadow {
+          box-shadow: 0 0 5px map-get($theme, shadow-color);
+
+          &:hover,
+          &:focus,
+          &:active,
+          &.active,
+          &.disabled,
+          &[disabled] {
+            box-shadow: 0 0 10px map-get($theme, shadow-color);
+          }
+        }
+      }
+    }
+  }
+}

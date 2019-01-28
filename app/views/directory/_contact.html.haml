@@ -1,0 +1,12 @@
+.key-contact
+  .key-contact-icon
+    - if user[:profile_picture]
+      = profile_picture_tag(user, size: 64)
+    - else
+      .px-2= icon("far", "user", class: "fa-3x")
+  .key-contact-info
+    .key-contact-name
+      = user.full_name
+      .key-contact-role= user.role
+    .key-contact-email= user.email
+    .key-contact-phone= user.phone

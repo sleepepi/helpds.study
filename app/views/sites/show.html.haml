@@ -1,0 +1,55 @@
+- @title = "#{@site.name} - Directory"
+- @menu_title = @site.name
+
+- @theme = "default"
+- content_for :header do
+  - if false
+    - if current_user.editor?
+      .float-right
+        = render "layouts/edit_delete_dropdown_header", edit_url: edit_site_path(@site), delete_url: @site, delete_confirmation: "Delete #{@site.name}?"
+  = @menu_title
+= render "internal/tabs"
+- content_for :breadcrumbs do
+  %ol
+    - if @site.center_type == "coordinating"
+      %li= link_to "coordinating centers", coordinating_centers_path
+    - else
+      %li= link_to "recruiting centers", recruiting_centers_path
+    %li.breadcrumb-muted= @site.slug
+    - if current_user.editor?
+      %li
+        = link_to edit_site_path(@site) do
+          = icon("fas", "cogs")
+- content_for :sidebar, render("directory/sidebar")
+
+.subheading
+  = @site.name
+  Members
+
+- if @site.users.present?
+  .dashboard-container.dashboard-table
+    %table.table.table-striped.table-borderless.table-hover.table-sticky
+      %col
+      %col
+      %col.d-none.d-md-table-column
+      %thead
+        %tr
+          %th Name
+          %th Email
+          %th.d-none.d-md-table-cell Role
+
+      - @site.users.each do |user|
+        %tr
+          %td= user.full_name
+          %td= user.email
+          %td.d-none.d-md-table-cell= user.role
+
+  .jumbotron.jumbotron-custom-text.jumbotron-shadow
+    = icon("far", "comments")
+    = mail_to ActionMailer::Base.smtp_settings[:email], "Contact us"
+    if your listed information is incorrect.
+- else
+  .jumbotron.jumbotron-custom-text
+    = icon("fas", "clone", class: "mr-1")
+    No members found.
+    = link_to "Start over", sites_path if params[:search].present?

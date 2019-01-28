@@ -1,0 +1,15 @@
+// Styles custom-checkbox and custom-radio backgrounds.
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    $input-shadow-color: rgba(0, 0, 0, .075);
+
+    .custom-control-input:checked ~ .custom-control-label::before {
+      background-color: map-get($theme, primary);
+    }
+
+    .custom-control-input:focus ~ .custom-control-label::before {
+      box-shadow: 0 0 0 1px $input-shadow-color, 0 0 0 0.2rem rgba(map-get($theme, primary), 0.25);
+    }
+  }
+}

@@ -1,0 +1,14 @@
+- @title = "Edit User - #{@user.username_was}"
+
+- @theme = "default"
+- content_for :header, @user.full_name_was.presence || @user.username_was
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to "users", admin_users_path
+    %li= link_to @user.username_was.downcase, admin_user_path(@user)
+    %li.breadcrumb-muted edit
+- content_for :sidebar, render("admin/sidebar")
+
+.dashboard-container
+  = render "admin/users/form", user: @user

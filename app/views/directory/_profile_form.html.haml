@@ -1,0 +1,5 @@
+= form_with model: user, url: settings_complete_profile_path, method: :patch, local: true do |form|
+  = render "forms/vertical/text_field", form: form, object: user, key: :role, key_name: "Project role", help_text: "Ex: Project Manager, DSMB Member, Co-Investigator, Study Coordinator, etc." if user.role.blank?
+  = render "forms/vertical/text_field", form: form, object: user, key: :phone, help_text: "Format: 555-555-5555" if user.phone.blank?
+  = render "forms/vertical/file_field", form: form, object: user, key: :profile_picture, help_text: "Square pictures work best. Supported file formats JPG, PNG, and GIF." if user[:profile_picture].blank?
+  = render "forms/vertical/submit", form: form, object: user, submit_text: "Update profile", cancel: false

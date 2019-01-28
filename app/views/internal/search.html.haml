@@ -1,0 +1,91 @@
+- @title = "Search"
+
+- @theme = "default"
+= render "internal/tabs"
+- @container = "container-fluid"
+- @nocontainer = true
+
+.page-box.p-0.last-box.d-flex.flex-column.justify-content-between
+  %div
+    .header-container{ class: content_for?(:tabs) ? "header-container-no-border" : nil }
+      .container-fluid
+        %h1.page-heading
+          = @title
+    .header-tabs
+      .container-fluid
+        = yield :tabs
+
+    .row.no-gutters.flex-md-nowrap.theme-custom-spacing
+      %main.col.p-3.remove-last-margin{ role: "main" }
+        .container
+          = form_with url: search_path, method: :get, local: true, id: "search-form", class: "my-3", skip_enforcing_utf8: true do |form|
+            .input-group
+              = form.text_field :search, value: params[:search], class: "form-control form-control-lg", placeholder: "Start your search...", autocomplete: "off", autofocus: params[:search].blank?
+              .input-group-append
+                = link_to "#", class: "btn btn-lg btn-primary", data: { object: "submit-and-disable", target: "#search-form" } do
+                  = icon("fas", "search")
+
+          - if @search_documents.present?
+            - @search_documents.each do |document|
+              - case document.searchable.class.to_s
+              - when "User"
+                - user = document.searchable
+                = render "directory/contact", user: user
+              - when "Document"
+                - document = document.searchable
+                .dashboard-container.dashboard-container-border-accent.mb-3
+                  .d-flex.align-items-center
+                    .d-inline-block.mr-1.text-primary-muted.pr-3= icon("far", "file-alt", class: "fa-3x")
+                    .d-inline{ style: "font-weight: 200;" }
+                      .text-dark
+                        = link_to document.filename, document_download_link(document)
+                      .text-muted
+                        = link_to document.folder.category.name, category_folder_path(document.folder.category, document.folder), class: "link-blend-muted"
+                        = icon("fas", "caret-right")
+                        = link_to document.folder.name, category_folder_path(document.folder.category, document.folder), class: "link-blend-muted"
+                    - if document.featured?
+                      .ml-auto.d-none.d-sm-block
+                        .d-inline-block.text-primary-muted= icon("fas", "star", class: "fa-3x", style: "color: #fbc02d;", data: { toggle: "tooltip", title: "Featured", container: "body", placement: "left" })
+              - when "Site"
+                - site = document.searchable
+                .dashboard-container.dashboard-container-border-accent.mb-3
+                  .d-flex.align-items-center
+                    .d-inline-block.mr-1.text-primary-muted.pr-3= icon("fas", "map-marker-alt", class: "fa-3x")
+                    .d-inline{ style: "font-weight: 200;" }
+                      .text-dark
+                        = link_to site.name, site
+                      .text-muted
+                        = succeed "," do
+                          = site.center_type_name
+                        = pluralize(site.users.count, "member")
+              - else
+                - if Rails.env.development?
+                  .dashboard-container.dashboard-container-border-accent.mb-3
+                    .d-flex.align-items-center
+                      .d-inline-block.mr-1.text-muted.pr-3= icon("far", "question-circle", class: "fa-3x")
+                      .d-inline{ style: "font-weight: 200;" }
+                        .text-dark
+                          = document.searchable.class.to_s
+                        .text-muted
+                          = "id: #{document.id}"
+            .center-horizontally= paginate @search_documents, theme: "bootstrap"
+          - elsif params[:search].present?
+            .mt-5.mb-4.text-center{ style: "font-weight: 300;font-size: 1.25rem;" }
+              No results returned.
+              = link_to "Start over.", search_path
+          - else
+            .mt-5.mb-4.text-center.text-primary-muted{ style: "font-weight: 300;font-size: 1.25rem;" } Search for files and users.
+
+
+  .py-5.footer-custom-bg
+    .container
+      .lead.text-center.mb-5
+        = icon("far", "comments")
+
+        = mail_to ActionMailer::Base.smtp_settings[:email], "Contact us"
+        with any questions.
+
+        .text-center
+          .text-center.pt-5
+            = image_tag "logos/help-ds-placeholder.png", style: "max-width: 480px;width: 100%;height: auto;", class: "img-ignore-selection rounded theme-blue-focus-bg p-5"
+

@@ -1,0 +1,71 @@
+one:
+  folder: mops
+  file: blank.doc
+  filename: blank.doc
+  # byte_size: 0
+  # download_count: 0
+  featured: false
+
+two:
+  folder: mops
+  file: blank.txt
+  filename: blank.txt
+  # byte_size: 0
+  # download_count: 0
+  featured: false
+
+blank_doc:
+  folder: samples
+  file: blank.doc
+  filename: blank.doc
+  content_type: application/msword
+  byte_size: 22528
+  featured: false
+
+blank_docx:
+  folder: samples
+  file: blank.docx
+  filename: blank.docx
+  content_type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+  byte_size: 11603
+  featured: false
+
+blank_pdf:
+  folder: samples
+  file: blank.pdf
+  filename: blank.pdf
+  content_type: application/pdf
+  byte_size: 10892
+  featured: false
+
+blank_ppt:
+  folder: samples
+  file: blank.ppt
+  filename: blank.ppt
+  content_type: application/vnd.ms-powerpoint
+  byte_size: 44544
+  featured: false
+
+blank_pptx:
+  folder: samples
+  file: blank.pptx
+  filename: blank.pptx
+  content_type: application/vnd.openxmlformats-officedocument.presentationml.presentation
+  byte_size: 32094
+  featured: false
+
+blank_txt:
+  folder: samples
+  file: blank.txt
+  filename: blank.txt
+  content_type: text/plain
+  byte_size: 10
+  featured: false
+
+blank_zip:
+  folder: samples
+  file: blank.zip
+  filename: blank.zip
+  content_type: application/zip
+  byte_size: 10407
+  featured: false

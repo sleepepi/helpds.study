@@ -1,0 +1,25 @@
+.landing-study-title {
+  font-size: 1.25rem;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 map-get($spacers, 4);
+  text-align: center;
+
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.5rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: 1.75rem;
+  }
+}
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .landing-study-title {
+      color: map-get($theme, brand-white);
+      text-shadow: 0 2px 3px map-get($theme, shadow-color);
+    }
+  }
+}

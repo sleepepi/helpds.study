@@ -1,0 +1,50 @@
+- @title = "Users"
+
+- @theme = "default"
+- content_for :header, @title
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  = render "layouts/per_page_breadcrumbs", per_page: 40, object_count: @users.total_count
+  %ol
+    %li.breadcrumb-muted users
+- content_for :sidebar, render("admin/sidebar")
+
+- if @users.present?
+  .dashboard-container.dashboard-table
+    %table.table.table-striped.table-borderless.table-hover.table-sticky
+      %col
+      %col.d-none.d-sm-table-column
+      %col.d-none.d-lg-table-column
+      %col.d-none.d-md-table-column
+      %col{ width: "1px" }
+      %thead
+        %tr.tr-align-middle
+          %th.py-2
+            = form_with url: admin_users_path, method: :get, local: true, skip_enforcing_utf8: true do |form|
+              = form.text_field :search, value: params[:search], placeholder: "Search users", autocomplete: "off", class: "table-cell-search-input border rounded"
+          %th.d-none.d-sm-table-cell Email
+          %th.d-none.d-lg-table-cell= order_to "Activity", primary: "activity"
+          %th.d-none.d-md-table-cell.text-center
+            = order_to "Logins", primary: "logins desc", secondary: "logins"
+          %th.text-center Actions
+      - @users.each do |user|
+        %tr
+          %td= link_to user.full_name, admin_user_path(user)
+          %td.d-none.d-sm-table-cell
+            - if user.confirmed?
+              = icon("fas", "check-circle", class: "text-primary", data: { toggle: "tooltip", title: "Email confirmed", container: "body", placement: "top" })
+            - else
+              = icon("fas", "question-circle", class: "text-muted", data: { toggle: "tooltip", title: "Unconfirmed email", container: "body", placement: "top" })
+            = user.email
+          %td.d-none.d-lg-table-cell.nowrap
+            %small= abbreviated_time(user.current_sign_in_at || user.created_at)
+          %td.d-none.d-md-table-cell.text-center
+            %small= user.sign_in_count
+          %td.text-center.nowrap= render "layouts/edit_delete_dropdown", edit_url: edit_admin_user_path(user), delete_url: admin_user_path(user), delete_confirmation: "Delete #{user.full_name}?"
+
+  .center-horizontally= paginate @users, theme: "bootstrap"
+- else
+  .jumbotron.jumbotron-custom-text
+    = icon("fas", "clone", class: "mr-1")
+    No users found.
+    = link_to "Start over", admin_users_path if params[:search].present?

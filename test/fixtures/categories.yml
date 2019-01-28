@@ -1,0 +1,17 @@
+general:
+  name: General
+  slug: general
+  position: 0
+  archived: false
+
+meeting_minutes:
+  name: Meeting Minutes
+  slug: meeting-minutes
+  position: 1
+  archived: false
+
+examples:
+  name: Example Files
+  slug: examples
+  position: 2
+  archived: false

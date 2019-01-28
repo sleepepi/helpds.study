@@ -1,0 +1,12 @@
+= form_with model: folder, url: attach_file_folder_path(folder.id), method: :post, local: true, multipart: true do |form|
+  .form-group.row
+    = label_tag :file, "File", class: "col-md-2 col-form-label"
+    .col-md-10
+      .custom-file
+        = label_tag :file, "Choose file", class: "custom-file-label"
+        = file_field_tag :file, class: "custom-file-input#{" is-invalid" if folder.errors[:file].present?}"
+      =# hidden_field_tag :file_cache
+      = render "forms/invalid_feedback", object: folder, key: :file
+      = render "forms/help_text", help_text: "Choose a document to upload. PDF, DOCX, DOC, PNG, JPG, GIF, RFT, TXT"
+
+  = render "forms/horizontal/submit", form: form, object: folder, submit_text: "Upload"

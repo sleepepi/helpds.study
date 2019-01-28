@@ -1,0 +1,33 @@
+- @title = "Recruiting Centers"
+
+- @theme = "default"
+- content_for :header, @title
+= render "internal/tabs"
+- content_for :breadcrumbs do
+  = render "layouts/per_page_breadcrumbs", per_page: 20, object_count: @sites.total_count
+  %ol
+    %li.breadcrumb-muted recruiting centers
+- content_for :sidebar, render("directory/sidebar")
+
+- if @sites.present?
+  .dashboard-container.dashboard-table
+    %table.table.table-striped.table-borderless.table-hover.table-sticky
+      %col
+      - if current_user.editor?
+        %col{ width: "1px" }
+      %thead
+        %tr
+          %th= order_to "Name", primary: "name"
+          - if current_user.editor?
+            %th.text-center Actions
+      - @sites.each do |site|
+        %tr
+          %td= link_to site.name, site
+          - if current_user.editor?
+            %td.text-center.nowrap= render "layouts/edit_delete_dropdown", edit_url: edit_site_path(site), delete_url: site, delete_confirmation: "Delete #{site.name}?"
+  .center-horizontally= paginate @sites, theme: "bootstrap"
+- else
+  .jumbotron.jumbotron-custom-text
+    = icon("fas", "clone", class: "mr-1")
+    No recruiting centers found.
+    = link_to "Start over", recruiting_centers_path if params[:search].present?

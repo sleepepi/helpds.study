@@ -1,0 +1,89 @@
+// Links
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .link-accent {
+      color: map-get($theme, accent);
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: darken(map-get($theme, accent), 5%);
+        // text-decoration: none;
+      }
+    }
+
+    .link-blend {
+      color: theme-color($theme, body-color, $p900-grey);
+
+      &:hover,
+      &:focus,
+      &:active {
+        // color: theme-color($theme, body-color, $p900-grey);
+        // text-decoration: none;
+      }
+    }
+
+    .link-blend-semi-muted {
+      color: $p800-grey;
+    }
+
+    .link-blend-muted {
+      color: $text-muted;
+
+      &:hover,
+      &:focus,
+      &:active {
+        // color: $text-muted;
+        // text-decoration: none;
+      }
+    }
+
+    .link-muted {
+      color: $text-muted;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $text-muted;
+        text-decoration: none;
+      }
+    }
+
+    .link-no-underline {
+      $theme_link_color: map-get($theme, primary);
+      @if map-get($theme, link-color) {
+        $theme_link_color: map-get($theme, link-color);
+      }
+
+      color: $theme_link_color;
+      text-decoration: none;
+
+      &:hover {
+        color: darken($theme_link_color, 5%);
+        text-decoration: none;
+      }
+    }
+
+    .link-unstyled {
+      color: theme-color($theme, body-color, $p900-grey);
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: theme-color($theme, body-color, $p900-grey);
+        text-decoration: none;
+      }
+    }
+
+    .link-white {
+      color: map-get($theme, brand-white);
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: map-get($theme, brand-white);
+      }
+    }
+  }
+}
+
