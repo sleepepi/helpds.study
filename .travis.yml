@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-- 2.6.0
+- 2.6.1
 - ruby-head
 # gemfile: "gems.rb"
 addons:
@@ -23,4 +23,4 @@ deploy:
   on:
     repo: sleepepi/helpds.study
     branch: master
-    rvm: 2.6.0
+    rvm: 2.6.1
