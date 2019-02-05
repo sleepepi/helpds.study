@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
 
     if Rails.env.production?
       if profile_picture&.url.present?
-        redirect_to profile_picture.url(query: { "response-content-disposition" => "inline" })
+        redirect_to profile_picture.url(query: { "response-content-disposition" => "inline" }), allow_other_host: true
       else
         head :ok
       end
