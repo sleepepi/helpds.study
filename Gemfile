@@ -13,7 +13,7 @@ gem "autoprefixer-rails",      "9.1.0"
 gem "aws-sdk-s3",                          require: false
 gem "bootstrap",               "~> 4.3.1"
 gem "carrierwave",             "~> 1.3.1"
-gem "devise",                  "~> 4.5.0"
+gem "devise",                  "~> 4.6.1"
 gem "fog-aws"
 gem "font-awesome-sass",       "~> 5.6.1"
 gem "haml",                    "~> 5.0.4"
