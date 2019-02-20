@@ -11,7 +11,7 @@ gem "pg",                      ">= 0.18", "< 2.0"
 # Gems used by project
 gem "autoprefixer-rails",      "9.1.0"
 gem "aws-sdk-s3",                          require: false
-gem "bootstrap",               "~> 4.2.1"
+gem "bootstrap",               "~> 4.3.1"
 gem "carrierwave",             "~> 1.3.1"
 gem "devise",                  "~> 4.5.0"
 gem "fog-aws"
