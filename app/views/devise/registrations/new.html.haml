@@ -4,12 +4,14 @@
 
 .page-box.last-box.d-flex.flex-column.justify-content-center.theme-bg{ class: "theme-#{@theme}-focus-bg" }
   .container
-    %p.lead.text-center.text-white Join our team.
+    %p.lead.text-center.text-white Registrations currently disabled.
+    - if false
+      %p.lead.text-center.text-white Join our team.
 
-    .sign-up-form
-      .sign-up-form-title
-        Create your account
-      = render "devise/registrations/form", resource: resource
+      .sign-up-form
+        .sign-up-form-title
+          Create your account
+        = render "devise/registrations/form", resource: resource
 
-    .sign-up-form.text-center
-      = link_to "I already have an account.", new_user_session_path
+      .sign-up-form.text-center
+        = link_to "I already have an account.", new_user_session_path
