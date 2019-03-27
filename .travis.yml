@@ -5,7 +5,9 @@ rvm:
 # gemfile: "gems.rb"
 addons:
   postgresql: "9.6"
-before_install: bundle update --bundler # Fix for ruby-head tests
+before_install:
+  gem update --system
+  bundle update --bundler # Fix for ruby-head tests
 before_script:
 - cp config/.travis.database.yml config/database.yml
 - psql -c 'create database travis_test;' -U postgres
