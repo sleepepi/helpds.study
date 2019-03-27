@@ -11,3 +11,4 @@
   - Font Awesome for icons
 - **Gem Changes**
   - Update to ruby 2.6.2
+  - Update to rails 6.0.0.beta3
