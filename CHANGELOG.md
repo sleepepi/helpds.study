@@ -9,3 +9,5 @@
   - Devise for authentication
   - Bootstrap for user interface
   - Font Awesome for icons
+- **Gem Changes**
+  - Update to ruby 2.6.2
