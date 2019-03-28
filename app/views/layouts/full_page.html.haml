@@ -16,8 +16,8 @@
     = javascript_include_tag "application", data: { turbolinks_track: "reload" }
   - render("themes/theme") unless @theme
   %body#top.full-page.theme-bg{ class: "theme-#{@theme.presence || "default"}-bg", data: { theme: @theme } }
-    = render "layouts/service_announcement", container: @container.presence
-    = render "layouts/flash_bar"
+    = render "layouts/features/service_announcement", container: @container.presence
+    = render "layouts/features/flash_bar"
     #top-menu.top-menu= render "menu/menu", container: @container.presence
     - if content_for?(:header)
       .header-container{ class: content_for?(:tabs) ? "header-container-no-border" : nil }

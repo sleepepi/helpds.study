@@ -1,6 +1,5 @@
 - @title = "Report Card"
 
-- @theme = "default"
 - content_for :header, @title
 = render "internal/tabs"
 - content_for :sidebar, render("internal/sidebar")
@@ -34,7 +33,7 @@
       .d-inline-block.p-3
         .small.text-primary-muted 87%
 
-.jumbotron.jumbotron-custom-text.jumbotron-shadow
+.jumbotron.jumbotron-custom-text
   = icon("fas", "info-circle", class: "text-primary-muted")
 
   Data collection has not yet started.

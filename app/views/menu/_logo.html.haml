@@ -1,4 +1,7 @@
-= link_to ENV["website_name"], root_path, class: "navbar-brand navbar-hide-scrolled", style: "font-weight: 300;"
+= link_to root_path, class: "navbar-brand navbar-hide-scrolled", style: "font-weight: 700;" do
+  %span{ style: "color: #0091EA;text-shadow: 0 0 1px #000;" }> HELP
+  %span{ style: "color: #FFEB3B;text-shadow: 0 0 1px #000;"}>-
+  %span{ style: "color: #0091EA;text-shadow: 0 0 1px #000;"} DS
 
 - if @menu_title || @title
   = link_to "#top", data: { object: "remove-collapse-in scroll-anchor", target: ".navbar-full-menu" }, class: "navbar-brand navbar-show-scrolled navbar-brand-small-caps", style: "font-weight: 300;" do

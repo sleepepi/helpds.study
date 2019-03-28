@@ -20,18 +20,29 @@ $default: (
   selection-bg: $p200-yellow, // $p200-COLOR
   selection-color: $p900-grey,
 
-  menu-bg: $p600-blue, // $p900-COLOR
-  menu-color: null, // brand-white
+  menu-bg: $p100-grey, // $p600-blue, // $p900-COLOR
+  menu-color: $p900-grey, // brand-white
+  menu-dropdown-bg: #fff,
 
-  header-bg: $p500-blue,
-  header-border: $p600-yellow,
+  header-bg: $p300-yellow, // $p300-yellow,
+  header-border: $p300-grey,
+  header-color: $p800-grey, // $p600-yellow,
+  header-tab-bg: $p600-yellow,
+  header-tab-color: $p50-black,
 
   body-bg: $p50-grey,
   body-color: $p900-grey,
   body-focus: $p600-yellow,
 
-  footer-bg: null, // $p100-grey
-  footer-color: null, // $p900-grey
+  footer-bg: $p50-grey, // $p100-grey
+  footer-color: $p900-grey, // $p900-grey
+
+  sidebar-link-active-bg: $p200-yellow,
+  sidebar-link-active-border: $p100-blue,
+
+  dropdown-link-active-bg: $p200-yellow,
+  dropdown-link-active-border: $p100-blue,
+  dropdown-divider: $p100-yellow,
 
   dashboard-bg: #fff,
   form-title-bg: $p500-yellow, // $p500-COLOR

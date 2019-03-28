@@ -58,12 +58,28 @@
         color: map-get($theme, brand-white);
       }
 
+      li {
+        a {
+          color: $p50-black;
+        }
+      }
+
       .active,
       a:hover,
       a:focus {
-        background-color: map-get($theme, p400);
-        border-color: map-get($theme, header-border);
-        color: map-get($theme, brand-white);
+        $sidebar-link-active-bg: map-get($theme, p400);
+        @if map-get($theme, sidebar-link-active-bg) {
+          $sidebar-link-active-bg: map-get($theme, sidebar-link-active-bg);
+        }
+
+        $sidebar-link-active-border: map-get($theme, header-border);
+        @if map-get($theme, sidebar-link-active-border) {
+          $sidebar-link-active-border: map-get($theme, sidebar-link-active-border);
+        }
+
+        background-color: $sidebar-link-active-bg;
+        border-color: $sidebar-link-active-border;
+        color: map-get($theme, brand-black);
 
         > .badge-sidebar {
           background-color: map-get($theme, brand-white);

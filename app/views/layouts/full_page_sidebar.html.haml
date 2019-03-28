@@ -18,8 +18,8 @@
   %body#top.full-page.theme-bg{ class: "theme-#{@theme.presence || "default"}-bg", data: { theme: @theme } }
     - @container = "container-fluid"
     - @nocontainer = true
-    = render "layouts/service_announcement"
-    = render "layouts/flash_bar"
+    = render "layouts/features/service_announcement"
+    = render "layouts/features/flash_bar"
     #top-menu.top-menu= render "menu/menu"
     .header-container{ class: content_for?(:tabs) ? "header-container-no-border" : nil }
       .container-fluid

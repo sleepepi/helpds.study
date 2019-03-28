@@ -38,3 +38,35 @@
     }
   }
 }
+
+.theme-default-bg {
+  .grid-light-bg,
+  .grid-primary-bg,
+  .grid-white-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .grid-primary-center-bg {
+    background-attachment: fixed;
+    background-position: center;
+  }
+
+  .grid-light-bg {
+    background-image: linear-gradient(rgba($p50-grey, .8), rgba($p50-grey, .8)), asset-url("themes/default/grid-3227459_1920.jpg");
+  }
+
+  .grid-primary-bg {
+    background-image: linear-gradient(rgba($p300-yellow, .8), rgba($p300-yellow, .8)), asset-url("themes/default/grid-3227459_1920.jpg");
+  }
+
+  .grid-white-bg {
+    background-image: linear-gradient(rgba(#fff, 1), rgba(#fff, .9)), asset-url("themes/default/grid-3227459_1920.jpg");
+  }
+
+  .grid-primary-center-bg {
+    background-image: linear-gradient(rgba($p300-yellow, .8), rgba($p300-yellow, .8)), asset-url("themes/default/the-polygon-1562743_1280.jpg");
+  }
+}

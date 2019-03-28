@@ -1,6 +1,5 @@
 - @title = "#{@user.username} - Users"
 
-- @theme = "default"
 - content_for :header do
   .float-right
     = render "layouts/edit_delete_dropdown", edit_url: edit_admin_user_path(@user), delete_url: admin_user_path(@user), delete_confirmation: "Delete #{@user.full_name}?"

@@ -18,7 +18,7 @@
 @each $name, $theme in $themes {
   .theme-#{$name}-bg {
     .landing-study-title {
-      color: map-get($theme, brand-white);
+      // color: map-get($theme, brand-white);
       text-shadow: 0 2px 3px map-get($theme, shadow-color);
     }
   }

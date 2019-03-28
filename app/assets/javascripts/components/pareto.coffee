@@ -5,8 +5,8 @@
       chart:
         type: "column"
       colors: [
-        "#c84848"
-        "#404040"
+        "#2196f3" # blue
+        "#fff176" # yellow
       ]
       title: text: "Participant not interested"
       tooltip:

@@ -1,6 +1,5 @@
 - @title = "Edit User - #{@user.username_was}"
 
-- @theme = "default"
 - content_for :header, @user.full_name_was.presence || @user.username_was
 = render "admin/tabs"
 - content_for :breadcrumbs do

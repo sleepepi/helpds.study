@@ -3,9 +3,9 @@
   = link_to dashboard_path, class: "header-tab #{"header-tab-active" if current_page}", data: { object: "#{"suppress-click" if current_page?(dashboard_path)}" } do
     = icon("fas", "home")
     - if current_page
-      Dashboard
+      Home
     - else
-      .d-none.d-sm-inline Dashboard
+      .d-none.d-sm-inline Home
 
   - current_page = params[:controller].in?(%w(internal)) && params[:action].in?(%w(directory)) || params[:controller].in?(%w(sites))
   = link_to directory_path, class: "header-tab #{"header-tab-active" if current_page}", data: { object: "#{"suppress-click" if current_page?(directory_path)}" } do

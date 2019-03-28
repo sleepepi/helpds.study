@@ -53,7 +53,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   get :settings, to: redirect("settings/profile")
   namespace :settings do
     get :profile

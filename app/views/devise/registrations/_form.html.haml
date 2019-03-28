@@ -2,7 +2,7 @@
   - if resource.username.blank?
     - help_text = "Choose a username to identify yourself on the site.<br>Ex: JoeSchmoe".html_safe
   = render "forms/vertical/text_field", form: form, object: resource, key: :username, id: true, placeholder: "Pick a username", help_text: help_text, autocomplete: "off", autocorrect: "off", autocapitalize: "none", spellcheck: "false"
-  = render "forms/vertical/text_field", form: form, object: resource, key: :full_name, placeholder: "Enter your full name"
+  = render "forms/vertical/text_field", form: form, object: resource, key: :full_name, placeholder: "Enter your full name", autocomplete: "off", autocorrect: "off", autocapitalize: "none", spellcheck: "false"
   = render "forms/vertical/email_field", form: form, object: resource, key: :email, placeholder: "you@example.com"
   = render "forms/vertical/password_field", form: form, object: resource, key: :password, placeholder: "Create a password", autocomplete: "new-password"
 

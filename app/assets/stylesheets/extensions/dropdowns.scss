@@ -84,10 +84,6 @@
       .dropdown-menu-custom {
         box-shadow: 0 0 10px 0 map-get($theme, box-shadow-color);
 
-        .dropdown-menu-custom-inner {
-          background-color: map-get($theme, p700);
-        }
-
         .dropdown-item {
           @if map-get($theme, menu-color) {
             color: map-get($theme, menu-color);
@@ -95,15 +91,30 @@
             color: map-get($theme, brand-white);
           }
 
+          $dropdown-link-active-bg: rgba(map-get($theme, brand-black), .2);
+          @if map-get($theme, dropdown-link-active-bg) {
+            $dropdown-link-active-bg: map-get($theme, dropdown-link-active-bg);
+          }
+
+          $dropdown-link-active-border: map-get($theme, accent);
+          @if map-get($theme, dropdown-link-active-border) {
+            $dropdown-link-active-border: map-get($theme, dropdown-link-active-border);
+          }
+
           &:focus,
           &:hover {
-            background-color: rgba(map-get($theme, brand-black), .2);
-            border-color: map-get($theme, accent);
+            background-color: $dropdown-link-active-bg;
+            border-color: $dropdown-link-active-border;
           }
         }
 
+        $dropdown-divider: rgba(map-get($theme, brand-white), .2);
+        @if map-get($theme, dropdown-divider) {
+          $dropdown-divider: map-get($theme, dropdown-divider);
+        }
+
         .dropdown-divider {
-          border-color: rgba(map-get($theme, brand-white), .2);
+          border-color: $dropdown-divider;
         }
 
         &::after {

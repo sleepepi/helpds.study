@@ -1,16 +1,26 @@
 - @title = "Dashboard"
 
-- @theme = "default"
 - content_for :header, @title
 = render "internal/tabs"
 - content_for :sidebar, render("internal/sidebar")
 
-.d-flex.flex-column.flex-sm-row.justify-content-around
-  - if current_user.incomplete_profile?
-    .dashboard-container.dashboard-container-border-accent{ style: "border-top: 1px solid #ccc;border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;background-color: #fff59d;width: 600px;max-width: 100%;" }
+- if current_user.incomplete_profile?
+  .d-flex.flex-column.flex-lg-row.flex-wrap
+    .dashboard-container{ style: "border-left: 1px solid #ffeb3b; max-width: 100%;" }
       .mb-3
         %strong Complete your profile
       = render "directory/profile_form", user: current_user
+    .flex-fill.mb-4.d-flex.flex-column.flex-sm-row.justify-content-around.p-3
+      .d-flex.flex-column.justify-content-center.mx-auto
+        .d-flex.align-items-center.justify-content-center.bg-white{ style: "width: 200px; height: 200px;border-radius: 100%;" }
+          %div{ style: "font-size: 4rem;font-weight: 600;color: #fff176;outline: 0 !important;box-shadow: none;" }
+            %span.fa-stack
+              = icon("fas", "circle-notch", class: "fa-stack-2x fa-spin", style: "color: #fff176;")
+              = icon("fas", "user-circle", class: "fa-stack-1x", style: "color: #0091EA;")
+
+        .my-3.text-center{ style: "width: 200px;font-weight: 600;" }
+          tell us about you
+
 
 .d-flex.flex-column.flex-sm-row.justify-content-between
   .dashboard-container.flex-fill

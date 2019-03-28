@@ -34,9 +34,13 @@
 
 @each $name, $theme in $themes {
   .theme-#{$name}-bg {
-    .navbar-custom {
+    &.navbar-custom {
       .navbar-brand {
-        color: map-get($theme, brand-white) !important;
+        @if map-get($theme, menu-color) {
+          color: map-get($theme, menu-color) !important;
+        } @else {
+          color: map-get($theme, brand-white) !important;
+        }
       }
 
       @include media-breakpoint-up(lg) {
