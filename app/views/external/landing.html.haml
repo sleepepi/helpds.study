@@ -2,13 +2,7 @@
 
 .d-flex.align-items-center.grid-primary-bg{ style: "background-color: #fff176;min-height: 30vh;" }
   .container
-    %div{ style: "font-size: 5rem;color: #0091EA;font-weight: 600;letter-spacing: -2px;" }
-      =# image_tag "logos/help-ds-without-longform.png", style: "max-width: 400px;width: 100%;height: auto;", class: "img-ignore-selection"
-
-      %span{ style: "color: #0091EA;text-shadow: 0 0 1px #000;" }> HELP
-      %span{ style: "color: #FFEB3B;text-shadow: 0 0 1px #000;"}>-
-      %span{ style: "color: #0091EA;text-shadow: 0 0 1px #000;"} DS
-
+    .logo-lg= render "layouts/logo"
     %div{ style: "font-weight: 300;font-size: 1.25rem;" } Healthy Sleep for Children with Down Syndrome
 
 .py-5

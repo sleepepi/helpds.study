@@ -1,8 +1,13 @@
 - @title = "Version"
 
 .page-box.last-box.d-flex.align-items-center.theme-bg.grid-primary-bg
-  .container
-    .text-center.px-5.mb-5
-      = image_tag "logos/help-ds-without-longform.png", style: "max-width: 400px;width: 100%;height: auto;", class: "img-ignore-selection rounded"
-    .text-center.text-shadow{ style: "font-size: 2rem;" }
-      = "v#{HelpDS::VERSION::STRING}"
+  .container.d-flex.justify-content-center
+    .d-inline-block.text-center.p-5.rounded.shadow.version-bg
+      .logo-lg= render "layouts/logo"
+      %div{ style: "font-size: 2.5rem;font-weight: 700;" }
+        %span.logo-help> v
+        - HelpDS::VERSION::STRING.split(".").each_with_index do |part, index|
+          - if index.positive?
+            %span.logo-dot> .
+          %span.logo-help= part
+

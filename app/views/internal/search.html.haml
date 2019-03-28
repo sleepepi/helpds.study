@@ -76,15 +76,13 @@
             .mt-5.mb-4.text-center.text-primary-muted{ style: "font-weight: 300;font-size: 1.25rem;" } Search for files and users.
 
 
-  .py-5.footer-custom-bg
+  .py-5.footer-custom-bg.grid-white-bg
     .container
       .lead.text-center.mb-5
-        = icon("far", "comments")
+        .mb-5
+          = icon("far", "comments")
 
-        = mail_to ActionMailer::Base.smtp_settings[:email], "Contact us"
-        with any questions.
+          = mail_to ActionMailer::Base.smtp_settings[:email], "Contact us"
+          with any questions.
 
-        .text-center
-          .text-center.pt-5
-            = image_tag "logos/help-ds-without-longform.png", style: "max-width: 480px;width: 100%;height: auto;", class: "img-ignore-selection rounded theme-blue-focus-bg p-5"
-
+        .logo-lg= render "layouts/logo"

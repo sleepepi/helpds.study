@@ -1,0 +1,25 @@
+.logo-lg {
+  font-size: 5rem;
+  font-weight: 600;
+  letter-spacing: -2px;
+}
+
+.logo-help,
+.logo-dash,
+.logo-ds,
+.logo-dot {
+  text-shadow: 0 0 1px $black;
+}
+
+.logo-help,
+.logo-ds {
+  color: $a700-light-blue;
+}
+
+.logo-dash {
+  color: $p500-yellow;
+}
+
+.logo-dot {
+  color: $p400-yellow;
+}
