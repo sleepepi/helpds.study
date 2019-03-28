@@ -2,9 +2,11 @@ Dear <%= @user.username %>,
 
 Your registration with <%= ENV["website_name"] %> was successful.
 
-<% if @user.confirmation_token.present? %>Please confirm you account to get started.
+<% if @user.confirmation_token.present? %>Please confirm you account to start your account approval process.
 
 <%= "#{ENV["website_url"]}/confirmation?confirmation_token=#{@user.confirmation_token}" %>
+
+Next, an admin will review your account information before approving your website access.
 
 <% end %>
 
