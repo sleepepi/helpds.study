@@ -15,15 +15,19 @@ module EmailHelper
   end
 
   def background_color
-    "#1976d2" # $p700-blue
+    "#fafafa" # $p50-grey
   end
 
-  def banner_color
-    emphasis_color
+  def header_color
+    "#fff59d" # $p200-yellow
   end
 
   def link_color
     "#2196f3" # $p500-blue
+  end
+
+  def logo_color
+    "#0091EA" # $a700-light-blue
   end
 
   def center_style

@@ -9,9 +9,9 @@ class ApplicationMailer < ActionMailer::Base
   protected
 
   def setup_email
-    location = "app/assets/images/logos/help-ds-without-longform.png"
-    attachments.inline["help-ds-logo.png"] = File.read(location)
-  rescue
-    nil
+  #   location = "app/assets/images/logos/help-ds-without-longform.png"
+  #   attachments.inline["help-ds-logo.png"] = File.read(location)
+  # rescue
+  #   nil
   end
 end
