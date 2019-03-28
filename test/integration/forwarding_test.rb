@@ -36,13 +36,6 @@ class ForwardingTest < ActionDispatch::IntegrationTest
     assert_equal search_path, path
   end
 
-  test "should friendly forward to randomizations" do
-    get randomizations_url
-    assert_redirected_to new_user_session_url
-    login(@regular)
-    assert_equal randomizations_path, path
-  end
-
   test "should friendly forward to data health" do
     get data_health_url
     assert_redirected_to new_user_session_url

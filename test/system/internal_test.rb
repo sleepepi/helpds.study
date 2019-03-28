@@ -22,13 +22,6 @@ class InternalTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Directory"
   end
 
-  test "visit randomizations" do
-    visit_login(@viewer)
-    visit randomizations_url
-    screenshot("visit-randomizations")
-    assert_selector "h1", text: "Randomizations"
-  end
-
   test "visit data health" do
     visit_login(@viewer)
     visit data_health_url

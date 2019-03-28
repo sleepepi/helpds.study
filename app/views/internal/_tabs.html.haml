@@ -1,5 +1,5 @@
 - content_for :tabs do
-  - current_page = params[:controller].in?(%w(internal)) && params[:action].in?(%w(dashboard data_health report_card randomizations pareto))
+  - current_page = params[:controller].in?(%w(internal)) && params[:action].in?(%w(dashboard data_health report_card pareto))
   = link_to dashboard_path, class: "header-tab #{"header-tab-active" if current_page}", data: { object: "#{"suppress-click" if current_page?(dashboard_path)}" } do
     = icon("fas", "home")
     - if current_page

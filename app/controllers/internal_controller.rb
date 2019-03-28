@@ -18,10 +18,6 @@ class InternalController < ApplicationController
     @key_contacts = User.current.where(key_contact: true)
   end
 
-  # # GET /randomizations
-  # def randomizations
-  # end
-
   # # GET /data-health
   # def data_health
   # end

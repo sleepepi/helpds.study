@@ -40,7 +40,6 @@ Rails.application.routes.draw do
     get :dashboard
     get :dashboard, as: :user_root
     get :directory
-    get :randomizations
     get :data_health, path: "data-health"
     get :report_card, path: "report-card"
     get :search

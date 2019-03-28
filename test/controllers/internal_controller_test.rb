@@ -20,12 +20,6 @@ class InternalControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get randomizations" do
-    login(@viewer)
-    get randomizations_url
-    assert_response :success
-  end
-
   test "should get data health" do
     login(@viewer)
     get data_health_url
