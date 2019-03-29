@@ -1,0 +1,13 @@
+.col-12.col-md-3.col-xl-2.sidebar-wrapper
+  .sidebar
+    #sidebar-nav-wrapper.sidebar-nav-wrapper.collapse.pt-3.py-md-3
+      -# non editor links here...
+
+      - if current_user.editor?
+        .mx-3.my-0.ml-md-3.mb-md-3.mr-md-0
+          %ul.sidebar-menu.sidebar-menu-shadow
+            %li.sidebar-menu-header Editor
+            %li
+              = link_to new_video_path, class: @video&.new_record? ? "active" : nil do
+                = icon("fas", "file-video")
+                Add video

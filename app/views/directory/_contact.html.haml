@@ -3,7 +3,7 @@
     - if user[:profile_picture]
       = profile_picture_tag(user, size: 64)
     - else
-      .px-2= icon("far", "user", class: "fa-3x")
+      .px-2= icon("fas", "user", class: "fa-3x")
   .key-contact-info
     .key-contact-name
       = user.full_name

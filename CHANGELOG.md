@@ -9,6 +9,8 @@
   - Devise for authentication
   - Bootstrap for user interface
   - Font Awesome for icons
+- **Videos Added**
+  - Editors can embed videos for users to view
 - **Gem Changes**
   - Update to ruby 2.6.2
   - Update to rails 6.0.0.beta3

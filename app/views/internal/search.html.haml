@@ -6,11 +6,11 @@
 
 .page-box.p-0.last-box.d-flex.flex-column.justify-content-between
   %div
-    .header-container{ class: content_for?(:tabs) ? "header-container-no-border" : nil }
+    .header-container.header-container-no-border
       .container-fluid
         %h1.page-heading
           = @title
-    .header-tabs
+    .header-tabs.header-tabs-no-breadcrumbs
       .container-fluid
         = yield :tabs
 
@@ -34,7 +34,7 @@
                 - document = document.searchable
                 .dashboard-container.dashboard-container-border-accent.mb-3
                   .d-flex.align-items-center
-                    .d-inline-block.mr-1.text-primary-muted.pr-3= icon("far", "file-alt", class: "fa-3x")
+                    .d-inline-block.mr-1.text-primary-muted.pr-3= icon("fas", "file-alt", class: "fa-3x")
                     .d-inline{ style: "font-weight: 200;" }
                       .text-dark
                         = link_to document.filename, document_download_link(document)
@@ -57,6 +57,16 @@
                         = succeed "," do
                           = site.center_type_name
                         = pluralize(site.users.count, "member")
+              - when "Video"
+                - video = document.searchable
+                .dashboard-container.dashboard-container-border-accent.mb-3
+                  .d-flex.align-items-center
+                    .d-inline-block.mr-1.pr-3.text-shadow{ style: "color: #505050" }= icon("fas", "video", class: "fa-3x")
+                    .d-inline{ style: "font-weight: 200;" }
+                      .text-dark
+                        = link_to video.name, video
+                      .text-muted
+                        Videos
               - else
                 - if Rails.env.development?
                   .dashboard-container.dashboard-container-border-accent.mb-3

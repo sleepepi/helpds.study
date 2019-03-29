@@ -1,6 +1,6 @@
 - content_for :tabs do
   - current_page = params[:controller].in?(%w(internal)) && params[:action].in?(%w(dashboard data_health report_card pareto))
-  = link_to dashboard_path, class: "header-tab #{"header-tab-active" if current_page}", data: { object: "#{"suppress-click" if current_page?(dashboard_path)}" } do
+  = link_to dashboard_path, class: "header-tab #{"header-tab-active" if current_page}" do
     = icon("fas", "home")
     - if current_page
       Home
@@ -8,7 +8,7 @@
       .d-none.d-sm-inline Home
 
   - current_page = params[:controller].in?(%w(internal)) && params[:action].in?(%w(directory)) || params[:controller].in?(%w(sites))
-  = link_to directory_path, class: "header-tab #{"header-tab-active" if current_page}", data: { object: "#{"suppress-click" if current_page?(directory_path)}" } do
+  = link_to directory_path, class: "header-tab #{"header-tab-active" if current_page}" do
     = icon("fas", "users")
     - if current_page
       Directory
@@ -16,15 +16,23 @@
       .d-none.d-sm-inline Directory
 
   - current_page = params[:controller].in?(%w(folders categories documents))
-  = link_to folders_path, class: "header-tab #{"header-tab-active" if current_page}", data: { object: "#{"suppress-click" if current_page?(folders_path)}" } do
+  = link_to folders_path, class: "header-tab #{"header-tab-active" if current_page}" do
     = icon("fas", "file-alt")
     - if current_page
       Docs
     - else
       .d-none.d-sm-inline Docs
 
+  - current_page = params[:controller].in?(%w(videos))
+  = link_to videos_path, class: "header-tab #{"header-tab-active" if current_page}" do
+    = icon("fas", "video")
+    - if current_page
+      Videos
+    - else
+      .d-none.d-sm-inline Videos
+
   - current_page = params[:controller].in?(%w(settings))
-  = link_to settings_path, class: "header-tab #{"header-tab-active" if current_page}", data: { object: "#{"suppress-click" if current_page?(settings_path)}" } do
+  = link_to settings_path, class: "header-tab #{"header-tab-active" if current_page}" do
     = icon("fas", "cog")
     - if current_page
       Settings
@@ -33,7 +41,7 @@
 
   - if false
     - current_page = params[:controller].in?(%w(internal)) && params[:action].in?(%w(reports))
-    = link_to reports_path, class: "header-tab #{"header-tab-active" if current_page}", data: { object: "#{"suppress-click" if current_page?(reports_path)}" } do
+    = link_to reports_path, class: "header-tab #{"header-tab-active" if current_page}" do
       = icon("fas", "chart-area")
       - if current_page
         Reports
@@ -41,7 +49,7 @@
         .d-none.d-sm-inline Reports
 
   - current_page = params[:controller].in?(%w(internal)) && params[:action].in?(%w(search))
-  = link_to search_path, class: "header-tab #{"header-tab-active" if current_page}", data: { object: "#{"suppress-click" if current_page?(search_path)}" } do
+  = link_to search_path, class: "header-tab #{"header-tab-active" if current_page}" do
     = icon("fas", "search")
     - if current_page
       Search

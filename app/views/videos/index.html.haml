@@ -1,0 +1,39 @@
+- @title = "Videos"
+
+- content_for :header, @title
+= render "internal/tabs"
+- content_for :breadcrumbs do
+  = render "layouts/per_page_breadcrumbs", per_page: 40, object_count: @videos.total_count
+  %ol
+    %li.breadcrumb-muted videos
+- content_for :sidebar, render("videos/sidebar")
+
+- if @videos.present?
+  .dashboard-container.dashboard-table
+    %table.table.table-striped.table-borderless.table-hover.table-sticky
+      %col
+      %col
+      - if current_user.editor?
+        %col{ width: "1px" }
+      %thead
+        %tr
+          %th= order_to "Name", primary: "name desc", secondary: "name"
+          %th.text-center= order_to "Added", primary: "latest", secondary: "oldest"
+          - if current_user.editor?
+            %th.text-center Actions
+
+      %tbody
+        - @videos.each do |video|
+          %tr
+            %td= link_to video.name, video
+            %td.text-center.nowrap
+              %small= video.created_at.strftime("%Y-%^b-%d")
+            - if current_user.editor?
+              %td.text-center= render "layouts/edit_delete_dropdown", edit_url: edit_video_path(video), delete_url: video, delete_confirmation: "Delete #{video.name}?"
+
+  .center-horizontally= paginate @videos, theme: "bootstrap"
+- else
+  .jumbotron.jumbotron-custom-text
+    = icon("fas", "clone", class: "mr-1")
+    No videos found.
+    = link_to "Start over", videos_path if params[:search].present?
