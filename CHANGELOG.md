@@ -5,6 +5,7 @@
   - Update link to Slice
 - **Gem Changes**
   - Update to ruby 2.6.3
+  - Update to devise 4.6.2
   - Update to haml 5.1.1
   - Update to jbuilder 2.9
   - Update to pg_search 2.2.0
