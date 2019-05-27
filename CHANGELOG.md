@@ -1,5 +1,9 @@
 ## 2.0.0
 
+### Enhancements
+- **General Changes**
+  - Update link to Slice
+
 ## 1.0.0 (April 11, 2019)
 
 ### Enhancements
