@@ -5,6 +5,7 @@
   - Update link to Slice
 - **Gem Changes**
   - Update to ruby 2.6.3
+  - Update to haml 5.1.1
 
 ## 1.0.0 (April 11, 2019)
 
