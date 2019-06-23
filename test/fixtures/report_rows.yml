@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  report: one
+  label: MyString
+  expression: MyText
+  position: 0
+  # result:
+  muted: false
+
+two:
+  report: one
+  label: MyString
+  expression: MyText
+  position: 1
+  # result:
+  muted: false

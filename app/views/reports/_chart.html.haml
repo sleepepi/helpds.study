@@ -1,0 +1,25 @@
+- offset = (report.report_type == "randomizations_by_site_by_month" ? 2 : 1)
+- series = [{ name: "Overall", visible: false, current_total: 0, data: [] }]
+- ((report.header || [])[1..] || []).each_with_index do |header, index|
+  - site = index + offset
+  - series[site] = { name: header["label"], data: [] }
+
+- report.reverse_report_rows.each do |row|
+  - series[0][:current_total] += row.result["count"]
+  - series[0][:data] << series[0][:current_total]
+  - (row.result["sites"] || []).each_with_index do |site_hash, index|
+    - site = index + offset
+    - series[site][:current_total] ||= 0
+    - series[site][:current_total] += site_hash["count"]
+    - series[site][:data] << series[site][:current_total]
+
+- categories = []
+- report.reverse_report_rows.each do |row|
+  - categories << row.result["label"]
+
+- if report.report_type == "randomizations_by_site_by_month"
+  - series[1] = { name: "Expected", data: [], visible: false, dashStyle: "shortdot" }
+  - Report::EXPECTED_RANDOMIZATIONS[0...series[0][:data].size].each do |count|
+    - series[1][:data] << count.round
+
+.w-100.mb-3{ data: { object: "draw-chart", series: series.to_json, categories: categories.to_json, title: report.name, yaxis: "# #{report.name}", xaxis: nil } }

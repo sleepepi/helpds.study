@@ -1,0 +1,9 @@
+one:
+  page: one
+  report: one
+  position: 0
+
+two:
+  page: one
+  report: two
+  position: 1

@@ -1,4 +1,5 @@
 @componentsReady = ->
+  chartsReady()
   csrfSetup()
   paretoCharts()
 

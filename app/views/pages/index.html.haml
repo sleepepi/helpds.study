@@ -1,0 +1,41 @@
+- @title = "Pages"
+
+- content_for :header do
+  .float-right
+    = link_to "New page", new_page_path, class: "btn btn-dark btn-shadow"
+  = @title
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  = render "layouts/per_page_breadcrumbs", per_page: 20, object_count: @pages.total_count
+  %ol
+    %li.breadcrumb-muted pages
+    %li= link_to icon("fas", "search"), "#", data: { object: "toggle-search-container", target: "#search" }
+= render "search/simple", url: pages_path
+- content_for :sidebar, render("admin/sidebar")
+
+- if @pages.present?
+  .dashboard-container.dashboard-table
+    %table.table.table-striped.table-borderless.table-hover.table-sticky
+      %col{ width: "1px" }
+      %col
+      %col{ width: "1px" }
+      %col{ width: "1px" }
+      %thead
+        %tr
+          %th.text-center= order_to "Position", primary: "position"
+          %th= order_to "Name", primary: "name"
+          %th.text-center= order_to "Archived", primary: "archived", secondary: "active"
+          %th.text-center Actions
+
+      %tbody
+        - @pages.each do |page|
+          %tr
+            %td.text-center= page.position
+            %td= link_to page.name, page
+            %td.text-center= simple_check page.archived
+            %td.text-center= render "layouts/edit_delete_dropdown", edit_url: edit_page_path(page), delete_url: page, delete_confirmation: "Delete #{page.name}?"
+- else
+  .jumbotron.jumbotron-custom-text
+    = icon("fas", "clone", class: "mr-1")
+    No pages found.
+    = link_to "Start over", pages_path if params[:search].present?

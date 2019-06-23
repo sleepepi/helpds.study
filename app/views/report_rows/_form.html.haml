@@ -1,0 +1,27 @@
+.report-row{ data: { object: "report-row" } }
+  .float-right
+    = link_to "Remove", "#", class: "btn btn-sm btn-outline-danger", data: { object: "remove-report-row" }, tabindex: "-1"
+  = icon("fas", "arrows-alt", class: "design-handle")
+
+  .clearfix.mb-3
+
+  %div
+    = hidden_field_tag "report[row_hashes][][report_row_id]", report_row.id
+
+    .form-group.row
+      = label_tag :label, "Label", class: "col-md-2 col-form-label"
+      .col-md-10
+        = text_field_tag "report[row_hashes][][label]", report_row.label, class: "form-control", placeholder: "Enter row label", autocomplete: "off", autocorrect: "off", autocapitalize: "none", spellcheck: "false"
+
+    .form-group.row
+      = label_tag :label, "Expression", class: "col-md-2 col-form-label"
+      .col-md-10
+        = text_field_tag "report[row_hashes][][expression]", report_row.expression, class: "form-control", placeholder: "Enter Slice expression", autocomplete: "off", autocorrect: "off", autocapitalize: "none", spellcheck: "false"
+
+    .form-group.row
+      .col-md-2.col-form-label
+      .col-md-10
+        .custom-control.custom-checkbox
+          - id = "muted-checkbox-#{SecureRandom.hex(8)}"
+          = check_box_tag "report[row_hashes][][muted]", "1", report_row.muted, class: "custom-control-input", id: id
+          = label_tag id, "Muted", class: "custom-control-label"

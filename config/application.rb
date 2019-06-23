@@ -25,5 +25,8 @@ module HelpDS
 
     # Ignores custom error DOM elements created by Rails.
     config.action_view.field_error_proc = proc { |html_tag, _instance| html_tag }
+
+    # Add Slice models to autoload_paths.
+    config.autoload_paths << Rails.root.join("app", "models", "slice")
   end
 end

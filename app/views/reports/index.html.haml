@@ -1,0 +1,41 @@
+- @title = "Reports"
+
+- content_for :header do
+  .float-right
+    = link_to "New report", new_report_path, class: "btn btn-dark btn-shadow"
+  = @title
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  = render "layouts/per_page_breadcrumbs", per_page: 20, object_count: @reports.total_count
+  %ol
+    %li.breadcrumb-muted reports
+    %li= link_to icon("fas", "search"), "#", data: { object: "toggle-search-container", target: "#search" }
+= render "search/simple", url: reports_path
+- content_for :sidebar, render("admin/sidebar")
+
+- if @reports.present?
+  .dashboard-container.dashboard-table
+    %table.table.table-striped.table-borderless.table-hover.table-sticky
+      %col
+      %col
+      %col{ width: "1px" }
+      %col{ width: "1px" }
+      %thead
+        %tr
+          %th= order_to "Name", primary: "name"
+          %th= order_to "Cached", primary: "cached"
+          %th.text-center= order_to "Archived", primary: "archived", secondary: "active"
+          %th.text-center Actions
+
+      %tbody
+        - @reports.each do |report|
+          %tr
+            %td= link_to report.name, report
+            %td= report.last_cached_at&.strftime("%b %-d, %Y at %-I:%M %p")
+            %td.text-center= simple_check report.archived
+            %td.text-center= render "layouts/edit_delete_dropdown", edit_url: edit_report_path(report), delete_url: report, delete_confirmation: "Delete #{report.name}?"
+- else
+  .jumbotron.jumbotron-custom-text
+    = icon("fas", "clone", class: "mr-1")
+    No reports found.
+    = link_to "Start over", reports_path if params[:search].present?

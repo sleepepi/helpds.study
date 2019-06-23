@@ -1,0 +1,12 @@
+- @title = "New Page"
+
+- content_for :header, @title
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to "pages", pages_path
+    %li.breadcrumb-muted new page
+- content_for :sidebar, render("admin/sidebar")
+
+.dashboard-container
+  = render "pages/form", page: @page

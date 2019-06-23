@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :videos
+  resources :pages
+  resources :reports
   root "external#landing"
 
   get :admin, to: "admin#dashboard"
@@ -45,6 +46,13 @@ Rails.application.routes.draw do
     get :report_card, path: "report-card"
     get :search
     get :pareto
+    get :report_page, path: "report/:page_id"
+  end
+
+  resources :pages do
+    collection do
+      post :add_report, path: "add-report"
+    end
   end
 
   resources :profiles, only: [] do
@@ -52,6 +60,17 @@ Rails.application.routes.draw do
       get :picture
     end
   end
+
+  resources :projects
+
+  resources :reports do
+    member do
+      get :refresh, to: redirect("reports/%{id}")
+      post :refresh
+    end
+  end
+
+  resources :report_rows, only: :new, path: "report-rows"
 
   get :settings, to: redirect("settings/profile")
   namespace :settings do
@@ -86,4 +105,5 @@ Rails.application.routes.draw do
              },
              path_names: { sign_up: "join", sign_in: "login" },
              path: ""
+  resources :videos
 end

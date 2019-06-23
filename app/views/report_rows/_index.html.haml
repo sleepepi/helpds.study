@@ -1,0 +1,4 @@
+- report.report_rows.each do |report_row|
+  %div.bg-light.p-3.mb-3.border.rounded
+    %strong= report_row.label
+    %div{ class: report_row.expression.blank? ? "text-muted" : nil }= report_row.expression.presence || "none"

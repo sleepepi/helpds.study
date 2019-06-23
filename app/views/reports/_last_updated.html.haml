@@ -1,0 +1,8 @@
+= report.last_cached_at&.strftime("%b %-d, %Y at %-I:%M %p")
+
+.small
+  Reports are automatically refreshed once per day.
+
+  = link_to refresh_report_path(report), method: :post do
+    = icon("fas", "sync")
+    Refresh now

@@ -1,0 +1,6 @@
+- if page.reports.present?
+  - page.reports.each do |report|
+    %div
+      = link_to report.name, report
+      - if report.archived?
+        %span.badge.badge-light archived

@@ -1,0 +1,18 @@
+= form_with model: page, local: true do |form|
+  = render "forms/horizontal/text_field", form: form, object: page, key: :name, slug: "slug"
+  = render "forms/horizontal/slug_field", form: form, object: page, key: :slug
+  = render "forms/horizontal/number_field", form: form, object: page, key: :position
+  = render "forms/horizontal/check_box", form: form, object: page, key: :archived
+
+  .form-group.row
+    %label.col-md-2.col-form-label Reports
+    .col-md-10
+      .form-control-plaintext
+        = link_to "Add Report", add_report_pages_path, method: :post, remote: true, class: "btn btn-sm btn-light"
+  %div{ data: { object: "page-reports-sortable" } }
+    = hidden_field_tag "page[report_ids][]", nil
+    - page.reports.each do |report|
+      = render "pages/report", report: report
+
+
+  = render "forms/horizontal/submit", form: form, object: page

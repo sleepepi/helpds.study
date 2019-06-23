@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_29_141320) do
+ActiveRecord::Schema.define(version: 2019_06_23_212342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,27 @@ ActiveRecord::Schema.define(version: 2019_03_29_141320) do
     t.index ["position"], name: "index_folders_on_position"
   end
 
+  create_table "page_reports", force: :cascade do |t|
+    t.bigint "page_id"
+    t.bigint "report_id"
+    t.integer "position"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["page_id", "report_id"], name: "index_page_reports_on_page_id_and_report_id", unique: true
+    t.index ["position"], name: "index_page_reports_on_position"
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.integer "position"
+    t.boolean "archived", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["archived"], name: "index_pages_on_archived"
+    t.index ["slug"], name: "index_pages_on_slug", unique: true
+  end
+
   create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
     t.string "searchable_type"
@@ -91,6 +112,44 @@ ActiveRecord::Schema.define(version: 2019_03_29_141320) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.string "access_token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "report_rows", force: :cascade do |t|
+    t.bigint "report_id"
+    t.string "label"
+    t.text "expression"
+    t.integer "position"
+    t.jsonb "result"
+    t.boolean "muted"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["position"], name: "index_report_rows_on_position"
+    t.index ["report_id"], name: "index_report_rows_on_report_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.bigint "project_id"
+    t.string "name"
+    t.string "header_label"
+    t.jsonb "header"
+    t.datetime "last_cached_at"
+    t.boolean "archived", default: false, null: false
+    t.boolean "sites_enabled", default: true, null: false
+    t.string "report_type"
+    t.text "filter_expression"
+    t.text "group_expression"
+    t.jsonb "data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["archived"], name: "index_reports_on_archived"
+    t.index ["project_id"], name: "index_reports_on_project_id"
   end
 
   create_table "sites", force: :cascade do |t|

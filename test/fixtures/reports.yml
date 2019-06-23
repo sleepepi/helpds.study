@@ -1,0 +1,25 @@
+one:
+  project: one
+  name: Report One
+  sites_enabled: true
+  archived: false
+  last_cached_at: 2019-04-30 16:44:06
+  report_type: expressions_by_site
+  header_label: MyString
+
+two:
+  project: one
+  name: Report Two
+  sites_enabled: true
+  archived: false
+  last_cached_at: 2019-04-30 16:44:06
+  report_type: expressions_by_site
+  header_label: MyString
+
+randomizations:
+  project: one
+  name: Randomizations
+  sites_enabled: true
+  archived: false
+  last_cached_at: 2019-05-19 11:51:36
+  report_type: randomizations_by_site_by_month

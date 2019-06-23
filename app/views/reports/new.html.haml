@@ -1,0 +1,12 @@
+- @title = "New Report"
+
+- content_for :header, @title
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to "reports", reports_path
+    %li.breadcrumb-muted new report
+- content_for :sidebar, render("admin/sidebar")
+
+.dashboard-container
+  = render "reports/form", report: @report

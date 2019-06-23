@@ -6,4 +6,7 @@
           %li.sidebar-menu-header= render "sidebar/toggle", title: "Admin"
           %li= link_to "Dashboard", admin_path, class: current_page?(admin_path) ? "active" : nil
           %li= link_to "Debug", admin_debug_path, class: current_page?(admin_debug_path) ? "active" : nil
+          %li= link_to "Projects", projects_path, class: params[:controller] == "projects" ? "active" : nil
+          %li= link_to "Pages", pages_path, class: params[:controller] == "pages" ? "active" : nil
+          %li= link_to "Reports", reports_path, class: params[:controller] == "reports" ? "active" : nil
           %li= link_to "Users", admin_users_path, class: params[:controller] == "admin/users" ? "active" : nil

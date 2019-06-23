@@ -1,0 +1,54 @@
+.search-bar-container {
+  position: relative;
+}
+
+.full-search-bar {
+  display: none;
+}
+
+.search-container-relative {
+  position: relative;
+}
+
+.search-container {
+  @include remove-last-child-bottom-margin;
+  border-radius: $border-radius;
+  left: 0;
+  margin: 0;
+  opacity: 0;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  transform: translateY(-20px);
+  transition-duration: .25s;
+  transition-property: opacity, position, transform;
+  transition-timing-function: ease-out;
+  visibility: hidden;
+
+  .btn {
+    transition-property: none;
+  }
+
+  &.search-container-visible {
+    margin: 0 0 20px;
+    opacity: 1;
+    position: relative;
+    transform: translateY(0);
+    visibility: inherit;
+
+    .btn {
+      transition-property: background-color;
+    }
+  }
+}
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .search-container {
+      background-color: map-get($theme, dashboard-bg);
+      box-shadow: 0 0 5px map-get($theme, box-shadow-color);
+      color: map-get($theme, body-color);
+    }
+  }
+}

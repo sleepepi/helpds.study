@@ -1,0 +1,19 @@
+- @title = "#{@page.name} - Pages"
+- @menu_title = @page.name
+
+- content_for :header do
+  .float-right
+    = render "layouts/edit_delete_dropdown", edit_url: edit_page_path(@page), delete_url: @page, delete_confirmation: "Delete #{@page.name}?"
+  Pages
+= render "admin/tabs"
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to "pages", pages_path
+    %li.breadcrumb-muted= @page.name.downcase
+- content_for :sidebar, render("admin/sidebar")
+
+.dashboard-container
+  = render "forms/horizontal/show/text", object: @page, key: :name
+  = render "forms/horizontal/show/text", object: @page, key: :position
+  = render "forms/horizontal/show/check_box", object: @page, key: :archived
+  = render "forms/horizontal/show/generic", title: "Reports", content: render("pages/reports", page: @page)

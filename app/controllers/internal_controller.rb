@@ -36,6 +36,12 @@ class InternalController < ApplicationController
   # def pareto
   # end
 
+  # GET /report/:page_id
+  def report_page
+    @page = Page.where(archived: false).find_by_param(params[:page_id])
+    redirect_to root_path unless @page
+  end
+
   private
 
   # def scope_order(scope)

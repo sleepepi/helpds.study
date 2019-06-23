@@ -1,0 +1,12 @@
+.report-row{ data: { object: "page-report" } }
+  .float-right
+    = link_to "Remove", "#", class: "btn btn-sm btn-outline-danger", data: { object: "remove-page-report" }, tabindex: "-1"
+  = icon("fas", "arrows-alt", class: "design-handle")
+
+  .clearfix.mb-3
+
+  %div
+    .form-group.row
+      = label_tag :label, "Report", class: "col-md-2 col-form-label"
+      .col-md-10
+        = select_tag "page[report_hashes][][report_id]", options_for_select(Report.order(:name).pluck(:name, :id), report.id), include_blank: "--Select a report--", class: "custom-select"

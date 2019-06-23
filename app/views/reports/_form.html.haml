@@ -1,0 +1,23 @@
+= form_with model: report, local: true do |form|
+  = render "forms/horizontal/select", form: form, object: report, key: :project_id, options: Project.order(:name).pluck(:name, :id), include_blank: "--Select a project--"
+  = render "forms/horizontal/select", form: form, object: report, key: :report_type, options: Report::REPORT_TYPES, include_blank: "--Select a report type--", id: true
+  = render "forms/horizontal/text_field", form: form, object: report, key: :name
+  = render "forms/horizontal/check_box", form: form, object: report, key: :sites_enabled, help_text: "Enable to include breakdown by site."
+  = render "forms/horizontal/check_box", form: form, object: report, key: :archived
+
+  %div{ data: { report_types: "expression_by_site_by_month" }, style: report.report_type == "expression_by_site_by_month" ? nil : "display: none;" }
+    = render "forms/horizontal/text_field", form: form, object: report, key: :filter_expression, help_text: "Enter expression to filter results for example for counts of screened, eligible, and consented cohorts."
+    = render "forms/horizontal/text_field", form: form, object: report, key: :group_expression, help_text: "Enter date variable to use to group results by month."
+  %div{ data: { report_types: "expressions_by_site" }, style: report.report_type == "expressions_by_site" ? nil : "display: none;" }
+    = render "forms/horizontal/text_field", form: form, object: report, key: :header_label
+    .form-group.row
+      %label.col-md-2.col-form-label Rows
+      .col-md-10
+        .form-control-plaintext
+          = link_to "Add Row", new_report_row_path, method: :get, remote: true, class: "btn btn-sm btn-light"
+    %div{ data: { object: "report-rows-sortable" } }
+      = hidden_field_tag "report[report_row_ids][]", nil
+      - report.report_rows.each do |report_row|
+        = render "report_rows/form", report_row: report_row
+
+  = render "forms/horizontal/submit", form: form, object: report

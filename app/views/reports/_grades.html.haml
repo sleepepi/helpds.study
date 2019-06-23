@@ -1,0 +1,29 @@
+- @table_scroll = true # Note: Does not work if elements have "position: sticky;"
+- data = report.data&.with_indifferent_access
+
+- if data.present?
+  .grades.mb-5
+    - data[:overall].each do |hash|
+      = render "reports_static/big_grade", hash: hash
+
+  .dashboard-container.dashboard-table{ style: "overflow-x: scroll;" }
+    .dashboard-lead
+      %h3 Event Breakdown
+      %p
+        Event data completion by site for randomized subjects. Data set as
+        MISSING are NOT included.
+    %table.table.table-striped.table-borderless.table-hover
+      %thead
+        %tr
+          %th Event
+          - data.dig(:sites)&.each do |site|
+            %th.nowrap= site
+      %tbody
+        - data.dig(:events)&.each do |row|
+          %tr
+            %td= row[:event]
+            - row[:cells].each do |cell|
+              %td
+                = render "reports_static/grade", percent: cell[:percent]
+                - if cell[:percent].present?
+                  %span.percent= link_to "#{cell[:percent]}%", leaving_path(slice: cell[:link])

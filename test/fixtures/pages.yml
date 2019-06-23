@@ -1,0 +1,11 @@
+one:
+  name: Screened
+  slug: screened
+  position: 0
+  archived: false
+
+two:
+  name: Consented
+  slug: consented
+  position: 1
+  archived: false
