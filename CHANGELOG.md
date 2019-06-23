@@ -1,4 +1,4 @@
-## 2.0.0
+## 2.0.0 (June 23, 2019)
 
 ### Enhancements
 - **General Changes**
