@@ -1,0 +1,23 @@
+.report-row {
+  border-radius: $border-radius;
+  cursor: move; // Cursor fallback
+  cursor: grab;
+  margin-bottom: $spacer;
+  padding: $spacer;
+  transition: transform .25s ease-out;
+
+  &.ui-sortable-helper {
+    cursor: move; // Cursor fallback
+    cursor: grabbing;
+    transform: scale(1.01);
+  }
+}
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .report-row {
+      background-color: map-get($theme, form-bg);
+      color: theme-color($theme, body-color, $p900-grey);
+    }
+  }
+}

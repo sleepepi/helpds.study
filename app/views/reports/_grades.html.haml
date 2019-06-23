@@ -4,7 +4,7 @@
 - if data.present?
   .grades.mb-5
     - data[:overall].each do |hash|
-      = render "reports_static/big_grade", hash: hash
+      = render "reports/big_grade", hash: hash
 
   .dashboard-container.dashboard-table{ style: "overflow-x: scroll;" }
     .dashboard-lead
@@ -24,6 +24,6 @@
             %td= row[:event]
             - row[:cells].each do |cell|
               %td
-                = render "reports_static/grade", percent: cell[:percent]
+                = render "reports/grade", percent: cell[:percent]
                 - if cell[:percent].present?
                   %span.percent= link_to "#{cell[:percent]}%", leaving_path(slice: cell[:link])

@@ -1,0 +1,62 @@
+.table-fixed {
+  table-layout: fixed;
+}
+
+.table {
+  &.table-borderless {
+    td,
+    th {
+      border-width: 0;
+    }
+
+    > tbody + tbody {
+      border-width: 0;
+    }
+  }
+}
+
+.table-sticky {
+  position: relative;
+  z-index: 1;
+
+  th {
+    background-color: $p50-grey;
+    position: sticky;
+    top: $header-height - 1px;
+    z-index: $zindex-sticky;
+  }
+}
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .dashboard-table {
+      .table-sticky {
+        th {
+          background-color: map-get($theme, brand-white);
+        }
+      }
+    }
+  }
+}
+
+.tr-align-middle {
+  td,
+  th {
+    vertical-align: middle !important;
+  }
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, .025);
+}
+
+.table-cell-search-input {
+  display: block;
+  padding: 0 map-get($spacers, 2);
+  width: 100%;
+}
+
+// Does not work if ".table-sticky" class is used.
+.table-overflow-scroll {
+  overflow-x: scroll;
+}

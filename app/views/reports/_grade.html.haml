@@ -1,0 +1,19 @@
+- if percent.nil?
+  %span.badge.badge-secondary
+    \-
+- else
+  - percent = percent.to_i
+  - if percent >= 97
+    %span.badge.badge-a A+
+  - elsif percent >= 93
+    %span.badge.badge-a A
+  - elsif percent >= 90
+    %span.badge.badge-a A-
+  - elsif percent >= 80
+    %span.badge.badge-b B
+  - elsif percent >= 70
+    %span.badge.badge-c C
+  - elsif percent >= 60
+    %span.badge.badge-d D
+  - else
+    %span.badge.badge-f F

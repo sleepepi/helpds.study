@@ -31,6 +31,17 @@
   }
 }
 
+.dashboard-lead {
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  padding: 15px;
+
+  + .dashboard-container {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
 .dashboard-container {
   @include remove-last-child-bottom-margin;
 }

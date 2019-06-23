@@ -37,7 +37,7 @@
     .row.no-gutters.flex-md-nowrap.theme-custom-spacing
       = render "sidebar/mini"
       = yield(:sidebar)
-      %main.col.p-3.remove-last-margin{ role: "main" }
+      %main.col.p-3.remove-last-margin{ role: "main", class: @table_scroll ? "table-overflow-scroll" : nil }
         = yield
     = yield :footer
     = render "layouts/footer"

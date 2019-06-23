@@ -1,0 +1,8 @@
+.report-number {
+  font-weight: 300;
+  font-size: 41px;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 72px;
+  }
+}
