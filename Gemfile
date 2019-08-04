@@ -24,7 +24,6 @@ gem "mini_magick",             "~> 4.9.2"
 gem "pg_search",               "~> 2.3.0"
 
 # Rails defaults
-gem "bootsnap",                ">= 1.1.0", require: false
 gem "coffee-rails",            "~> 4.2"
 gem "jbuilder",                "~> 2.9"
 gem "puma",                    "~> 3.11"

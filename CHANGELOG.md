@@ -5,6 +5,7 @@
   - Admins now receive an email when a user confirms their account
 - **Gem Changes**
   - Update to pg_search 2.3.0
+  - Remove bootsnap
 
 ### Bug Fix
 - Fix bug that prevented reports from being reordered on pages
