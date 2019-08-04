@@ -20,18 +20,6 @@ class InternalControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get data health" do
-    login(@viewer)
-    get data_health_url
-    assert_response :success
-  end
-
-  test "should get report card" do
-    login(@viewer)
-    get report_card_url
-    assert_response :success
-  end
-
   test "should get search" do
     login(@viewer)
     get search_url

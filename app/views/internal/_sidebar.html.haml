@@ -12,7 +12,6 @@
             - pages.each do |page|
               %li= link_to page.name, report_page_path(page), class: current_page?(report_page_path(page)) ? "active" : nil
 
-          %li.sidebar-menu-header Examples
-          %li= link_to "Data health", data_health_path, class: current_page?(data_health_path) ? "active" : nil
-          %li= link_to "Report card", report_card_path, class: current_page?(report_card_path) ? "active" : nil
-          %li= link_to "Pareto", pareto_path, class: current_page?(pareto_path) ? "active" : nil
+          - if false
+            %li.sidebar-menu-header Examples
+            %li= link_to "Pareto", pareto_path, class: current_page?(pareto_path) ? "active" : nil

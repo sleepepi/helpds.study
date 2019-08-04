@@ -3,6 +3,8 @@
 ### Enhancements
 - **Admin Changes**
   - Admins now receive an email when a user confirms their account
+- **General Changes**
+  - Remove example reports from dashboard
 - **Gem Changes**
   - Update to pg_search 2.3.0
   - Remove bootsnap

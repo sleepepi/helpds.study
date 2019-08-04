@@ -36,20 +36,6 @@ class ForwardingTest < ActionDispatch::IntegrationTest
     assert_equal search_path, path
   end
 
-  test "should friendly forward to data health" do
-    get data_health_url
-    assert_redirected_to new_user_session_url
-    login(@regular)
-    assert_equal data_health_path, path
-  end
-
-  test "should friendly forward to report card" do
-    get report_card_url
-    assert_redirected_to new_user_session_url
-    login(@regular)
-    assert_equal report_card_path, path
-  end
-
   test "should friendly forward to coordinating centers" do
     get coordinating_centers_url
     assert_redirected_to new_user_session_url

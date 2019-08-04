@@ -18,14 +18,6 @@ class InternalController < ApplicationController
     @key_contacts = User.current.where(key_contact: true)
   end
 
-  # # GET /data-health
-  # def data_health
-  # end
-
-  # # GET /report-card
-  # def report_card
-  # end
-
   # GET /search
   def search
     @search_documents = find_search_documents
@@ -43,11 +35,6 @@ class InternalController < ApplicationController
   end
 
   private
-
-  # def scope_order(scope)
-  #   @order = params[:order]
-  #   scope.order(Arel.sql(User::ORDERS[params[:order]] || User::DEFAULT_ORDER))
-  # end
 
   def find_search_documents
     params[:search]&.squish!

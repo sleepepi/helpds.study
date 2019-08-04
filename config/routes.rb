@@ -42,8 +42,6 @@ Rails.application.routes.draw do
     get :dashboard
     get :dashboard, as: :user_root
     get :directory
-    get :data_health, path: "data-health"
-    get :report_card, path: "report-card"
     get :search
     get :pareto
     get :report_page, path: "report/:page_id"

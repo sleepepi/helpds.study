@@ -22,20 +22,6 @@ class InternalTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Directory"
   end
 
-  test "visit data health" do
-    visit_login(@viewer)
-    visit data_health_url
-    screenshot("visit-data-health")
-    assert_selector "h1", text: "Data Health"
-  end
-
-  test "visit report card" do
-    visit_login(@viewer)
-    visit report_card_url
-    screenshot("visit-report-card")
-    assert_selector "h1", text: "Report Card"
-  end
-
   test "visit search" do
     visit_login(@viewer)
     visit search_url
