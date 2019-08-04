@@ -4,6 +4,9 @@
 - **Gem Changes**
   - Update to pg_search 2.3.0
 
+### Bug Fix
+- Fix bug that prevented reports from being reordered on pages
+
 ## 2.0.0 (June 23, 2019)
 
 ### Enhancements
