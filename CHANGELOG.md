@@ -1,4 +1,4 @@
-## 3.0.0
+## 3.0.0 (August 4, 2019)
 
 ### Enhancements
 - **Admin Changes**
