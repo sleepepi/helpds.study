@@ -27,7 +27,7 @@ class Site < ApplicationRecord
     %w(name slug)
   end
 
-  include PgSearch
+  include PgSearch::Model
   multisearchable against: [:name, :slug, :center_type]
 
   # Validations

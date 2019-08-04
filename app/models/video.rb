@@ -12,7 +12,7 @@ class Video < ApplicationRecord
   DEFAULT_ORDER = "videos.name"
 
   # Concerns
-  include PgSearch
+  include PgSearch::Model
   multisearchable against: [:name]
 
   include Searchable

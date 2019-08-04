@@ -35,7 +35,7 @@ class User < ApplicationRecord
     %w(full_name email username)
   end
 
-  include PgSearch
+  include PgSearch::Model
   multisearchable against: [:full_name, :email, :username, :keywords, :phone, :role]
 
   # Scopes

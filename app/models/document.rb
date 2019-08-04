@@ -19,7 +19,7 @@ class Document < ApplicationRecord
   DEFAULT_ORDER = "LOWER(documents.filename)"
 
   # Concerns
-  include PgSearch
+  include PgSearch::Model
   multisearchable against: [:filename, :content_type]
 
   # Validations

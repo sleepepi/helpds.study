@@ -1,5 +1,9 @@
 ## 3.0.0
 
+### Enhancements
+- **Gem Changes**
+  - Update to pg_search 2.3.0
+
 ## 2.0.0 (June 23, 2019)
 
 ### Enhancements
