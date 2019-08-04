@@ -1,6 +1,8 @@
 ## 3.0.0
 
 ### Enhancements
+- **Admin Changes**
+  - Admins now receive an email when a user confirms their account
 - **Gem Changes**
   - Update to pg_search 2.3.0
 

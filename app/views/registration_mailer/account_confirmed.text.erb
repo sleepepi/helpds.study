@@ -1,0 +1,7 @@
+Dear <%= @admin.username %>,
+
+<%= @user.full_name %> <%= @user.email %> confirmed their account on the <%= ENV["website_name"] %> website.
+
+Approve the registration here:
+
+<%= "#{ENV["website_url"]}/admin/users/#{@user.id}/edit" %>

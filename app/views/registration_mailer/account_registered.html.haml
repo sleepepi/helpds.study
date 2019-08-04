@@ -1,0 +1,17 @@
+%p{ style: p_style }
+  Dear
+  = succeed "," do
+    = @admin.username
+
+%p{ style: p_style }
+  = @user.full_name
+  = mail_to @user.email, @user.email, style: regular_style
+  %span{ style: emphasis_style } registered
+  a new account on the
+  = ENV["website_name"]
+  website.
+
+  View the registration here:
+
+%p{ style: center_style }
+  = link_to "User account", "#{ENV["website_url"]}/admin/users/#{@user.id}", style: link_style

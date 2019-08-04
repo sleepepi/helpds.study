@@ -6,12 +6,12 @@
 %p{ style: p_style }
   = @user.full_name
   = mail_to @user.email, @user.email, style: regular_style
-  %span{ style: emphasis_style } registered
-  a new account on the
+  %span{ style: emphasis_style } confirmed
+  their account on the
   = ENV["website_name"]
   website.
 
   Approve the registration here:
 
 %p{ style: center_style }
-  = link_to "Edit user account", "#{ENV["website_url"]}/admin/users/#{@user.id}", style: link_style
+  = link_to "User account", "#{ENV["website_url"]}/admin/users/#{@user.id}/edit", style: link_style
