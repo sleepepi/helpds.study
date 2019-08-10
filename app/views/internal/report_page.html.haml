@@ -4,7 +4,14 @@
 = render "internal/tabs"
 - content_for :sidebar, render("internal/sidebar")
 
-- @page.reports.where(archived: false).each do |report|
-  = render "reports/chart", report: report if report.chart?
-  = render "reports/table", report: report if report.table?
-  = render "reports/grades", report: report if report.grades?
+- @reports = @page.reports.where(archived: false)
+
+- if @reports.present?
+  - @reports.each do |report|
+    = render "reports/chart", report: report if report.chart?
+    = render "reports/table", report: report if report.table?
+    = render "reports/grades", report: report if report.grades?
+- else
+  .jumbotron.jumbotron-custom-text.jumbotron-shadow
+    = icon("fas", "info-circle", class: "text-primary-muted")
+    No reports have been added to this page.

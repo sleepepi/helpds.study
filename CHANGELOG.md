@@ -1,5 +1,9 @@
 ## 4.0.0
 
+### Enhancements
+- **Report Changes**
+  - Report pages without any reports now display a message
+
 ## 3.0.0 (August 4, 2019)
 
 ### Enhancements
