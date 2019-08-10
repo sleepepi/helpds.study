@@ -184,14 +184,16 @@ class Report < ApplicationRecord
           position: index,
           label: row[:label],
           expression: row[:expression],
-          muted: (row[:muted] == "1")
+          muted: (row[:muted] == "1"),
+          emphasized: (row[:emphasized] == "1")
         )
       else
         report_rows.create(
           position: index,
           label: row[:label],
           expression: row[:expression],
-          muted: (row[:muted] == "1")
+          muted: (row[:muted] == "1"),
+          emphasized: (row[:emphasized] == "1")
         )
       end
     end

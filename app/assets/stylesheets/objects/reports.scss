@@ -20,6 +20,17 @@
   }
 }
 
+.report-emphasis {
+  font-weight: bold;
+  border-top: 1px solid transparent;
+}
+
+.report-indented {
+  td:first-child {
+    padding-left: map-get($spacers, 4);
+  }
+}
+
 @each $name, $theme in $themes {
   .theme-#{$name}-bg {
     .report-table {
@@ -38,6 +49,10 @@
           background-color: theme-color($theme, table-accent-bg, $table-accent-bg);
         }
       }
+    }
+
+    .report-emphasis {
+      border-color: theme-color($theme, table-border-color, $table-border-color);
     }
   }
 }

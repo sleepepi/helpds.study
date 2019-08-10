@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_10_160007) do
+ActiveRecord::Schema.define(version: 2019_08_10_172906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 2019_08_10_160007) do
     t.boolean "muted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "emphasized", default: false, null: false
     t.index ["position"], name: "index_report_rows_on_position"
     t.index ["report_id"], name: "index_report_rows_on_report_id"
   end

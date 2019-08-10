@@ -23,9 +23,11 @@
           - counts.each do |count|
             %th.text-center= table_number count
     %tbody
+      - indented = false # No rows start indented.
       - report.report_rows.each do |report_row|
+        - indented = false if report_row.emphasized? # Only set indent to false if row is emphasized, to keep child rows indented.
         - result = report_row.result || {}
-        %tr{ class: report_row.muted? ? "text-muted" : nil }
+        %tr{ class: [report_row.muted? ? "text-muted" : nil, report_row.emphasized? ? "report-emphasis" : nil, indented ? "report-indented" : nil] }
           %td= report_row.label
           %td.text-center
             - if result["link"].present? && result["count"].to_i.positive?
@@ -38,3 +40,4 @@
                 = link_to number_with_delimiter(hash["count"]), leaving_path(slice: hash["link"]), class: "text-dark"
               - else
                 = table_number hash["count"]
+          - indented = true if report_row.emphasized? # Only set indent to true if the row is emphasized.

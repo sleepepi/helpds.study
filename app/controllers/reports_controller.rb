@@ -77,7 +77,7 @@ class ReportsController < ApplicationController
       :project_id, :report_type, :name, :header_label, :sites_enabled,
       :archived, :filter_expression, :group_expression, :description,
       row_hashes: [
-        :report_row_id, :label, :expression, :muted
+        :report_row_id, :label, :expression, :muted, :emphasized
       ]
     )
   end

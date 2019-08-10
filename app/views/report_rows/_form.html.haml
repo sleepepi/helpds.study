@@ -25,3 +25,11 @@
           - id = "muted-checkbox-#{SecureRandom.hex(8)}"
           = check_box_tag "report[row_hashes][][muted]", "1", report_row.muted, class: "custom-control-input", id: id
           = label_tag id, "Muted", class: "custom-control-label"
+
+    .form-group.row
+      .col-md-2.col-form-label
+      .col-md-10
+        .custom-control.custom-checkbox
+          - id = "emphasized-checkbox-#{SecureRandom.hex(8)}"
+          = check_box_tag "report[row_hashes][][emphasized]", "1", report_row.emphasized, class: "custom-control-input", id: id
+          = label_tag id, "Emphasized", class: "custom-control-label"
