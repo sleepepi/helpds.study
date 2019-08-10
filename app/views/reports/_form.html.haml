@@ -2,6 +2,7 @@
   = render "forms/horizontal/select", form: form, object: report, key: :project_id, options: Project.order(:name).pluck(:name, :id), include_blank: "--Select a project--"
   = render "forms/horizontal/select", form: form, object: report, key: :report_type, options: Report::REPORT_TYPES, include_blank: "--Select a report type--", id: true
   = render "forms/horizontal/text_field", form: form, object: report, key: :name
+  = render "forms/horizontal/text_area", form: form, object: report, key: :description, rows: 7, help_text: "Supports markdown formatting."
   = render "forms/horizontal/check_box", form: form, object: report, key: :sites_enabled, help_text: "Enable to include breakdown by site."
   = render "forms/horizontal/check_box", form: form, object: report, key: :archived
 

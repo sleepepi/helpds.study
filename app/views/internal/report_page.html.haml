@@ -8,6 +8,7 @@
 
 - if @reports.present?
   - @reports.each do |report|
+    = render "reports/description", report: report if report.description.present?
     = render "reports/chart", report: report if report.chart?
     = render "reports/table", report: report if report.table?
     = render "reports/grades", report: report if report.grades?

@@ -15,6 +15,7 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
       project_id: projects(:one).id,
       report_type: "expressions_by_site",
       name: "New Report",
+      description: "This is the report description",
       header_label: "Diagnosis",
       archived: "0",
       row_hashes: [
