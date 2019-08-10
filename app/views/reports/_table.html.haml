@@ -9,8 +9,8 @@
       - counts[index + 1] ||= 0
       - counts[index + 1] += hash["count"].to_i
 
-.dashboard-container.dashboard-table{ style: "overflow-x: scroll;" }
-  %table.table.table-striped.table-borderless.table-hover
+.dashboard-container.dashboard-table.table-scroll
+  %table.table.table-striped.table-borderless.report-table
     %thead
       %tr
         %th= report.header_label

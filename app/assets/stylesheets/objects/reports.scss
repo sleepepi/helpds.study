@@ -6,3 +6,38 @@
     font-size: 72px;
   }
 }
+
+.report-table {
+  td,
+  th {
+    font-size: .8rem;
+    white-space: nowrap;
+
+    &:first-child {
+      left: 0;
+      position: sticky;
+    }
+  }
+}
+
+@each $name, $theme in $themes {
+  .theme-#{$name}-bg {
+    .report-table {
+      th:first-child {
+        background-color: map-get($theme, dashboard-bg);
+      }
+
+      tr:nth-of-type(even) {
+        td:first-child {
+          background-color: map-get($theme, dashboard-bg);
+        }
+      }
+
+      tr:nth-of-type(odd) {
+        td:first-child {
+          background-color: theme-color($theme, table-accent-bg, $table-accent-bg);
+        }
+      }
+    }
+  }
+}

@@ -60,3 +60,12 @@
 .table-overflow-scroll {
   overflow-x: scroll;
 }
+
+.table-scroll {
+  margin: auto;
+  margin-bottom: $spacer;
+  overflow: auto;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
