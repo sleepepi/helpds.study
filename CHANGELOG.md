@@ -1,6 +1,8 @@
 ## 5.0.0
 
 ### Enhancements
+- **General Changes**
+  - Remove landing pages learn more and sign up links
 - **Dashboard Changes**
   - Complete profile widget no longer requires a photo to be uploaded
 - **Gem Changes**

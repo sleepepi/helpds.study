@@ -5,33 +5,34 @@
     .logo-lg= render "layouts/logo"
     %div{ style: "font-weight: 300;font-size: 1.25rem;" } Healthy Sleep for Children with Down Syndrome
 
-.py-5
-  .container
-    .mb-5.text-center.mb-3{ style: "font-size: 1.25rem; font-weight: 700; letter-spacing: 1px;"}
-      .d-inline-block
-        .mb-2 Get started! Click an option to&hellip;
-        .mx-3{ style: "border-bottom: .25rem solid #0091EA;" }
+- if false
+  .py-5
+    .container
+      .mb-5.text-center.mb-3{ style: "font-size: 1.25rem; font-weight: 700; letter-spacing: 1px;"}
+        .d-inline-block
+          .mb-2 Get started! Click an option to&hellip;
+          .mx-3{ style: "border-bottom: .25rem solid #0091EA;" }
 
-    .d-flex.flex-column.flex-sm-row.justify-content-around
-      .d-flex.flex-column.justify-content-center.mx-auto
-        .d-flex.align-items-center.justify-content-center.bg-white{ style: "width: 200px; height: 200px;border-radius: 100%;" }
-          = link_to new_user_registration_path, style: "font-size: 4rem;font-weight: 600;color: #fff176;outline: 0 !important;box-shadow: none;", class: "link-no-underline" do
-            %span.fa-stack
-              = icon("fas", "spinner", class: "fa-stack-2x", style: "color: #fff176;")
-              = icon("fas", "procedures", class: "fa-stack-1x", style: "color: #0091EA;")
+      .d-flex.flex-column.flex-sm-row.justify-content-around
+        .d-flex.flex-column.justify-content-center.mx-auto
+          .d-flex.align-items-center.justify-content-center.bg-white{ style: "width: 200px; height: 200px;border-radius: 100%;" }
+            = link_to new_user_registration_path, style: "font-size: 4rem;font-weight: 600;color: #fff176;outline: 0 !important;box-shadow: none;", class: "link-no-underline" do
+              %span.fa-stack
+                = icon("fas", "spinner", class: "fa-stack-2x", style: "color: #fff176;")
+                = icon("fas", "procedures", class: "fa-stack-1x", style: "color: #0091EA;")
 
-        .my-3.text-center{ style: "width: 200px;font-weight: 600;" }
-          sign up
+          .my-3.text-center{ style: "width: 200px;font-weight: 600;" }
+            sign up
 
-      .d-flex.flex-column.justify-content-center.mx-auto
-        .d-flex.align-items-center.justify-content-center.bg-white{ style: "width: 200px; height: 200px;border-radius: 100%;" }
-          = link_to root_path, style: "font-size: 4rem;font-weight: 600;color: #fff176;outline: 0 !important;box-shadow: none;", class: "link-no-underline" do
-            %span.fa-stack
-              = icon("fas", "adjust", class: "fa-stack-2x", style: "color: #fff176;")
-              = icon("fas", "book-open", class: "fa-stack-1x", style: "color: #0091EA;")
+        .d-flex.flex-column.justify-content-center.mx-auto
+          .d-flex.align-items-center.justify-content-center.bg-white{ style: "width: 200px; height: 200px;border-radius: 100%;" }
+            = link_to root_path, style: "font-size: 4rem;font-weight: 600;color: #fff176;outline: 0 !important;box-shadow: none;", class: "link-no-underline" do
+              %span.fa-stack
+                = icon("fas", "adjust", class: "fa-stack-2x", style: "color: #fff176;")
+                = icon("fas", "book-open", class: "fa-stack-1x", style: "color: #0091EA;")
 
-        .my-3.text-center{ style: "width: 200px;font-weight: 600;" }
-          learn more
+          .my-3.text-center{ style: "width: 200px;font-weight: 600;" }
+            learn more
 
 .bg-white.p-5.grid-white-bg{ style: "min-height: 23vh;" }
   .container
