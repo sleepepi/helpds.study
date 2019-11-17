@@ -5,6 +5,8 @@
   - Complete profile widget no longer requires a photo to be uploaded
 - **Gem Changes**
   - Update to ruby 2.6.4
+  - Update to rails 6.0.1
+  - Update to devise 4.7.1
 
 ## 4.0.0 (August 10, 2019)
 
