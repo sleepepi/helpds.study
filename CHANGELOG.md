@@ -1,5 +1,9 @@
 ## 5.0.0
 
+### Enhancements
+- **Dashboard Changes**
+  - Complete profile widget no longer requires a photo to be uploaded
+
 ## 4.0.0 (August 10, 2019)
 
 ### Enhancements

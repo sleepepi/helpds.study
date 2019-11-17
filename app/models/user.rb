@@ -59,7 +59,7 @@ class User < ApplicationRecord
 
   # Methods
   def incomplete_profile?
-    role.blank? || phone.blank? || self[:profile_picture].blank?
+    role.blank? || phone.blank? # || self[:profile_picture].blank?
   end
 
   def email=(email)
