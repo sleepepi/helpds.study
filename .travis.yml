@@ -25,5 +25,5 @@ deploy:
   bucket_name: elasticbeanstalk-us-east-1-891922105393
   on:
     repo: sleepepi/helpds.study
-    branch: master
+    branch: 5-0-stable
     rvm: 2.6.4
