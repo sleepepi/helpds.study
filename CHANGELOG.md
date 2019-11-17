@@ -5,6 +5,8 @@
   - Remove landing pages learn more and sign up links
 - **Dashboard Changes**
   - Complete profile widget no longer requires a photo to be uploaded
+- **Folder Changes**
+  - Folders are now sorted alphabetically in each category
 - **Gem Changes**
   - Update to ruby 2.6.4
   - Update to rails 6.0.1

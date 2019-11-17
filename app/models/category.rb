@@ -21,5 +21,5 @@ class Category < ApplicationRecord
                    allow_nil: true
 
   # Relationships
-  has_many :folders, -> { order(Arel.sql("folders.position nulls last")) }, dependent: :destroy
+  has_many :folders, -> { order(:name) }, dependent: :destroy
 end
