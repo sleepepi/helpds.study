@@ -11,7 +11,8 @@
             - if folders.present?
               %li.sidebar-menu-header= category.name
               - category.folders.each do |folder|
-                %li= link_to folder.name, category_folder_path(category, folder), class: current_page?(category_folder_path(category, folder)) ? "active" : nil
+                %li
+                  %small= link_to folder.name, category_folder_path(category, folder), class: current_page?(category_folder_path(category, folder)) ? "active" : nil
 
       - if current_user.editor?
         .mx-3.my-0.ml-md-3.mb-md-3.mr-md-0

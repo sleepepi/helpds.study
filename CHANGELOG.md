@@ -5,6 +5,8 @@
   - Remove landing pages learn more and sign up links
 - **Dashboard Changes**
   - Complete profile widget no longer requires a photo to be uploaded
+- **Document Changes**
+  - Reduced size of folder names in documents sidebar
 - **Folder Changes**
   - Folders are now sorted alphabetically in each category
 - **Site Changes**
