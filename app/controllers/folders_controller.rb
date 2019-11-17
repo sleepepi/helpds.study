@@ -116,7 +116,6 @@ class FoldersController < ApplicationController
   end
 
   def docs_scope_order(scope)
-    @order = params[:order]
     scope.order(Arel.sql(Document::ORDERS[params[:order]] || Document::DEFAULT_ORDER))
   end
 end

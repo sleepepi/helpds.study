@@ -74,7 +74,6 @@ class PagesController < ApplicationController
   end
 
   def scope_order(scope)
-    @order = params[:order]
     scope.order(Arel.sql(Page::ORDERS[params[:order]] || Page::DEFAULT_ORDER))
   end
 end

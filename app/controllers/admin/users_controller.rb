@@ -49,7 +49,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def scope_order(scope)
-    @order = params[:order]
     scope.order(Arel.sql(User::ORDERS[params[:order]] || User::DEFAULT_ORDER))
   end
 end

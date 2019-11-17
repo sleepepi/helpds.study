@@ -83,7 +83,6 @@ class ReportsController < ApplicationController
   end
 
   def scope_order(scope)
-    @order = params[:order]
     scope.order(Arel.sql(Report::ORDERS[params[:order]] || Report::DEFAULT_ORDER))
   end
 end

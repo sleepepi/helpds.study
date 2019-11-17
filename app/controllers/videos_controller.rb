@@ -68,7 +68,6 @@ class VideosController < ApplicationController
   end
 
   def scope_order(scope)
-    @order = params[:order]
     scope.order(Arel.sql(Video::ORDERS[params[:order]] || Video::DEFAULT_ORDER))
   end
 end

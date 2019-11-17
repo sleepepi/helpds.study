@@ -76,7 +76,6 @@ class SitesController < ApplicationController
   end
 
   def scope_order(scope)
-    @order = params[:order]
     scope.order(Arel.sql(Site::ORDERS[params[:order]] || Site::DEFAULT_ORDER))
   end
 end
