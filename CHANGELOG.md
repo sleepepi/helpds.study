@@ -3,6 +3,8 @@
 ### Enhancements
 - **Dashboard Changes**
   - Complete profile widget no longer requires a photo to be uploaded
+- **Gem Changes**
+  - Update to ruby 2.6.4
 
 ## 4.0.0 (August 10, 2019)
 
