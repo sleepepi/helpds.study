@@ -21,7 +21,8 @@ class DocumentsControllerTest < ActionDispatch::IntegrationTest
 
   def document_params
     {
-      featured: "1"
+      featured: "1",
+      keywords: "important"
     }
   end
 
@@ -62,6 +63,9 @@ class DocumentsControllerTest < ActionDispatch::IntegrationTest
   test "should update document as editor" do
     login(@editor)
     patch document_url(@document), params: { document: document_params }
+    @document.reload
+    assert_equal true, @document.featured?
+    assert_equal "important", @document.keywords
     assert_redirected_to category_folder_url(@category, @folder)
   end
 

@@ -95,6 +95,6 @@ class DocumentsController < ApplicationController
   end
 
   def document_params
-    params.require(:document).permit(:featured)
+    params.require(:document).permit(:featured, :keywords)
   end
 end

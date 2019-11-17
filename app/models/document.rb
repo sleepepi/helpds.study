@@ -18,9 +18,12 @@ class Document < ApplicationRecord
   }
   DEFAULT_ORDER = "LOWER(documents.filename)"
 
+  include Squishable
+  squish :keywords
+
   # Concerns
   include PgSearch::Model
-  multisearchable against: [:filename, :content_type]
+  multisearchable against: [:filename, :content_type, :keywords]
 
   # Validations
   validates :filename, presence: true,

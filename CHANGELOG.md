@@ -7,6 +7,8 @@
   - Complete profile widget no longer requires a photo to be uploaded
 - **Document Changes**
   - Reduced size of folder names in documents sidebar
+  - Admins can now set keywords for documents to improve search results for
+    documents
 - **Folder Changes**
   - Folders are now sorted alphabetically in each category
 - **Site Changes**
