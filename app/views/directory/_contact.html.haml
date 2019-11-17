@@ -7,6 +7,8 @@
   .key-contact-info
     .key-contact-name
       = user.full_name
+      - if user.staffid
+        .key-contact-staffid.badge.badge-light= user.staffid
       .key-contact-role= user.role
     .key-contact-email= user.email
     .key-contact-phone= user.phone

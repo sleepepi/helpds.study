@@ -7,6 +7,11 @@
   - Complete profile widget no longer requires a photo to be uploaded
 - **Folder Changes**
   - Folders are now sorted alphabetically in each category
+- **Site Changes**
+  - Display Staff ID on site pages in the directory
+- **User Changes**
+  - Admins can now associate a Staff ID with a user that will display in the
+    directory and in the menu bar
 - **Gem Changes**
   - Update to ruby 2.6.4
   - Update to rails 6.0.1

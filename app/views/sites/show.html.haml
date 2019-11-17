@@ -25,24 +25,28 @@
   = @site.name
   Members
 
-- if @site.users.present?
+- if @users.present?
   .dashboard-container.dashboard-table
     %table.table.table-striped.table-borderless.table-hover.table-sticky
+      %col.d-none.d-lg-table-column{ width: "1px" }
       %col
       %col
       %col.d-none.d-md-table-column
       %thead
         %tr
-          %th Name
-          %th Email
-          %th.d-none.d-md-table-cell Role
+          %th.d-none.d-lg-table-cell.text-center.nowrap= order_to "Staff ID", primary: "staffid"
+          %th= order_to "Name", primary: "name"
+          %th= order_to "Email", primary: "email"
+          %th.d-none.d-md-table-cell= order_to "Role", primary: "role"
 
-      - @site.users.each do |user|
+      - @users.each do |user|
         %tr
+          %td.d-none.d-lg-table-cell.nowrap.text-center
+            %small= user.staffid
           %td= user.full_name
           %td= user.email
           %td.d-none.d-md-table-cell= user.role
-
+  .center-horizontally= paginate @users, theme: "bootstrap"
   .jumbotron.jumbotron-custom-text.jumbotron-shadow
     = icon("far", "comments")
     = mail_to ActionMailer::Base.smtp_settings[:email], "Contact us"

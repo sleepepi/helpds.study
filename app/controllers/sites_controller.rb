@@ -26,9 +26,12 @@ class SitesController < ApplicationController
     @sites = scope_order(scope).page(params[:page]).per(20)
   end
 
-  # # GET /sites/1
-  # def show
-  # end
+  # GET /sites/1
+  def show
+    @users = @site.users
+                  .order(Arel.sql(User::ORDERS[params[:order]] || "users.staffid"))
+                  .page(params[:page]).per(40)
+  end
 
   # GET /sites/new
   def new

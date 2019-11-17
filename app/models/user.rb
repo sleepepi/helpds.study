@@ -17,8 +17,16 @@ class User < ApplicationRecord
   ORDERS = {
     "activity desc" => "(CASE WHEN (users.current_sign_in_at IS NULL) THEN users.created_at ELSE users.current_sign_in_at END) desc",
     "activity" => "(CASE WHEN (users.current_sign_in_at IS NULL) THEN users.created_at ELSE users.current_sign_in_at END)",
+    "email desc" => "users.email desc",
+    "email" => "users.email",
     "logins desc" => "users.sign_in_count desc",
-    "logins" => "users.sign_in_count"
+    "logins" => "users.sign_in_count",
+    "name desc" => "users.full_name desc",
+    "name" => "users.full_name",
+    "role desc" => "users.role desc",
+    "role" => "users.role",
+    "staffid desc" => "users.staffid desc",
+    "staffid" => "users.staffid"
   }
   DEFAULT_ORDER = "(CASE WHEN (users.current_sign_in_at IS NULL) THEN users.created_at ELSE users.current_sign_in_at END) desc"
 
@@ -29,14 +37,15 @@ class User < ApplicationRecord
 
   include Strippable
   strip :username
+  strip :staffid
 
   include Searchable
   def self.searchable_attributes
-    %w(full_name email username)
+    %w(full_name email username staffid)
   end
 
   include PgSearch::Model
-  multisearchable against: [:full_name, :email, :username, :keywords, :phone, :role]
+  multisearchable against: [:full_name, :email, :username, :keywords, :phone, :role, :staffid]
 
   # Scopes
   scope :admins, -> { current.where(admin: true) }
