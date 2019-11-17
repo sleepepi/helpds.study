@@ -9,7 +9,7 @@ class FoldersController < ApplicationController
   ]
   before_action :create_category, only: [:create, :update]
   before_action :find_category_and_folder_or_redirect, only: [
-    :show, :edit, :upload
+    :show, :edit, :upload, :download_zip
   ]
   before_action :find_folder_or_redirect, only: [
     :update, :destroy, :attach_file, :attach_files
@@ -25,6 +25,17 @@ class FoldersController < ApplicationController
   # GET /docs/:category/:folder
   def show
     @documents = docs_scope_order(@folder.documents).page(params[:page]).per(Folder::DOCS_PER_PAGE)
+  end
+
+  # GET /docs/:category/:folder/download-zip
+  def download_zip
+    @folder.generate_zipped_folder!
+
+    if Rails.env.production?
+      redirect_to @folder.zipped_folder.url(query: { "response-content-disposition" => "attachment" }), allow_other_host: true
+    else
+      send_file_if_present @folder.zipped_folder
+    end
   end
 
   # GET /docs/new

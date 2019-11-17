@@ -23,6 +23,7 @@ gem "kaminari",                "~> 1.1.1"
 gem "mini_magick",             "~> 4.9.2"
 gem "pg_search",               "~> 2.3.0"
 gem "redcarpet",               "~> 3.5.0"
+gem "rubyzip",                 "~> 2.0.0"
 
 # Rails defaults
 gem "coffee-rails",            "~> 5.0"

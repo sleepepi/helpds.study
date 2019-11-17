@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   get "docs/:category/:folder", to: "folders#show", as: :category_folder
   get "docs/:category/:folder/edit", to: "folders#edit", as: :edit_category_folder
   get "docs/:category/:folder/upload", to: "folders#upload", as: :upload_category_folder
+  post "docs/:category/:folder/download-zip", to: "folders#download_zip", as: :download_zip_category_folder
   get "docs/:category/:folder/*filename", to: "documents#download", as: :download_document, format: false
   get "docs/:category", to: redirect("docs"), as: :docs_category
 

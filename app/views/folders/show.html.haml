@@ -14,6 +14,10 @@
     %li= link_to "docs", folders_path
     %li.breadcrumb-muted= @category.slug
     %li.breadcrumb-muted= @folder.slug
+    %li.breadcrumb-muted
+      = link_to download_zip_category_folder_path(@folder.category, @folder), method: :post do
+        = icon("fas", "file-download")
+        download all
     - if current_user.editor?
       %li
         = link_to edit_category_folder_path(@category, @folder) do

@@ -11,6 +11,7 @@
     documents
 - **Folder Changes**
   - Folders are now sorted alphabetically in each category
+  - All files in a folder can be downloaded as a single zip file
 - **Site Changes**
   - Display Staff ID on site pages in the directory
 - **User Changes**

@@ -2,6 +2,9 @@
 
 # Tracks files uploaded to the folder.
 class Folder < ApplicationRecord
+  # Uploaders
+  mount_uploader :zipped_folder, ZipUploader
+
   # Constants
   DOCS_PER_PAGE = 20
 
@@ -31,5 +34,29 @@ class Folder < ApplicationRecord
       filename: file.original_filename,
       content_type: Document.content_type(file.original_filename)
     )
+  end
+
+  def generate_zipped_folder!
+    zip_name = "helpds-study-#{category.slug}-#{slug}.zip"
+    temp_zip_file = Tempfile.new(zip_name)
+    begin
+      stream = Zip::OutputStream::write_buffer do |zos|
+        documents.each do |document|
+          zos.put_next_entry document.filename
+          zos.write document.file.read
+        end
+      end
+      stream.rewind
+      temp_zip_file.write(stream.sysread)
+      temp_zip_file.define_singleton_method(:original_filename) do
+        zip_name
+      end
+      update zipped_folder: temp_zip_file
+      update zipped_folder_byte_size: zipped_folder.size
+    ensure
+      # Close and delete the temp file
+      temp_zip_file.close
+      temp_zip_file.unlink
+    end
   end
 end
